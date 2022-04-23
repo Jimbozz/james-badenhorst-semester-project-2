@@ -1,5 +1,6 @@
 export default function createMenu() {
   const container = document.querySelector(".nav-container");
+  const { pathname } = document.location;
 
   container.innerHTML = `<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -18,10 +19,17 @@ export default function createMenu() {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link ${
+                  pathname === "/public/index.html" ? "active" : ""
+                }" aria-current="page" href="/public/index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link ${
+                  pathname === "/public/products.html" ? "active" : ""
+                }" href="/public/products.html">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/public/products.html">Sign in</a>
               </li>
             </ul>
             <form class="d-flex">

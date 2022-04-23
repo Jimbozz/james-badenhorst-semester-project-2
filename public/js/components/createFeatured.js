@@ -1,4 +1,5 @@
 import { baseUrl } from "../settings/api.js";
+import { productsUrl } from "../settings/api.js";
 
 export function createFeatured(renderFeatured) {
   const container = document.querySelector(".featured-products");
@@ -14,7 +15,7 @@ export function createFeatured(renderFeatured) {
           <h5 class="card-title">${featured.title}</h5>
           <p class="card-text">$ ${featured.price}</p>
         </div>
-        <a href="#" class="stretched-link"></a>
+        <a href="/public/product-specific.html?id=${featured.id}" class="stretched-link"></a>
       </div>
   </div>
 `;

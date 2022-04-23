@@ -19,7 +19,7 @@ export function createProducts(renderProducts) {
           <h5 class="card-title">${product.title}</h5>
           <p class="card-text">$ ${product.price}</p>
         </div>
-        <a href="${productsUrl}/${product.id}" class="stretched-link"></a>
+        <a href="/public/product-specific.html?id=${product.id}" class="stretched-link"></a>
       </div>
   </div>`;
   });

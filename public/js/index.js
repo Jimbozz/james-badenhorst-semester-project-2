@@ -1,8 +1,8 @@
+import { baseUrl } from "./settings/api.js";
 import { featuredUrl } from "./settings/api.js";
 import { heroUrl } from "./settings/api.js";
 import createMenu from "./components/createMenu.js";
 import { createFeatured } from "./components/createFeatured.js";
-import { baseUrl } from "./settings/api.js";
 
 const container = document.querySelector(".bg-image");
 

@@ -35,6 +35,7 @@ export default function createMenu() {
                 Search
               </button>
             </form>
+            <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
           </div>
         </div>
       </nav>`;

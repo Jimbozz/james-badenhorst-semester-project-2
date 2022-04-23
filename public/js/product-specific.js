@@ -28,15 +28,21 @@ console.log(url);
 function createProduct(product) {
   console.log(product.image.url);
   container.innerHTML = `
-  <div class="row g-2">
-    <div class="col-7">
+  <div class="row gx-5">
+    <div class="col-md">
       <div class="ratio ratio-1x1">
         <img src="${baseUrl}${product.image.url}" class="img-fluid" alt="" style="object-fit: cover;">
       </div>
-      
     </div>
-    <div class="col-5">
-      <div class="p-3 border bg-light">Custom column padding</div>
+    <div class="col-md">
+      
+        <h1>${product.title}</h1>
+        <p>${product.description}</p>
+        <h4>$ ${product.price}</h4>
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
+                Primary button
+              </button>
+      
     </div>
     </div>
   `;

@@ -6,7 +6,7 @@ export function createFeatured(renderFeatured) {
   renderFeatured.forEach(function (featured) {
     container.innerHTML += `
   <div class="col">
-      <div class="card h-100 border-0 shadow bg-body ">
+      <div class="card h-100 border-0 shadow bg-body">
         <div class="ratio ratio-1x1">
           <img src="${baseUrl}${featured.image.url}" class="card-img-top img-fluid" alt="${featured.image.alternativeText}">
         </div>

@@ -3,7 +3,7 @@ export default function createMenu() {
 
   container.innerHTML = `<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="#">Logo</a>
           <button
             class="navbar-toggler"
             type="button"

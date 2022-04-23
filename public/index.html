@@ -9,16 +9,9 @@
   </head>
   <body>
     <main>
-      <div class="nav-container"></div>
-      <section class="hero">
+      <div class="wrapper">
+        <div class="nav-container"></div>
         <div class="px-4 py-5 my-5 text-center">
-          <img
-            class="d-block mx-auto mb-4"
-            src="/docs/5.0/assets/brand/bootstrap-logo.svg"
-            alt=""
-            width="72"
-            height="57"
-          />
           <h1 class="display-5 fw-bold">Centered hero</h1>
           <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">
@@ -40,9 +33,11 @@
             </div>
           </div>
         </div>
-      </section>
-      <div class="container">
-        <div class="row row-cols-1 row-cols-md-4 g-4 featured-products"></div>
+        <div class="container mb-5">
+          <div
+            class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 featured-products"
+          ></div>
+        </div>
       </div>
       <footer>This is a footer</footer>
     </main>

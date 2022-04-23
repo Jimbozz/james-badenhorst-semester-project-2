@@ -1,0 +1,23 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  // font-family: "Archivo Narrow", sans-serif;
+  // background-color: $background-colour;
+  // color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  display: flex;
+  flex-shrink: 0;
+  color: white;
+  background-color: $dark;
+}
+
+.wrapper {
+  flex: 1 0 auto;
+}

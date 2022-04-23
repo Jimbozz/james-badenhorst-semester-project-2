@@ -10740,3 +10740,27 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.card-img-top {
+  object-fit: cover;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  display: flex;
+  flex-shrink: 0;
+  color: white;
+  background-color: #262525;
+}
+
+.wrapper {
+  flex: 1 0 auto;
+}/*# sourceMappingURL=style.css.map */

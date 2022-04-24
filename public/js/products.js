@@ -1,5 +1,6 @@
 import { productsUrl } from "./settings/api.js";
 import { baseUrl } from "./settings/api.js";
+import { searchProducts } from "./components/searchProducts.js";
 import createMenu from "./components/createMenu.js";
 
 createMenu();
@@ -32,6 +33,7 @@ export function createProducts(renderProducts) {
     console.log(json);
 
     createProducts(json);
+    searchProducts(json);
   } catch (error) {
     console.log(error);
   }

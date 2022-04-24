@@ -39,11 +39,10 @@ export default function createMenu() {
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
             </form>
-            <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
+            <a href="/public/cart.html">
+              <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
+            </a>
           </div>
         </div>
       </nav>`;

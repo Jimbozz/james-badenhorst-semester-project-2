@@ -1,5 +1,6 @@
 import { baseUrl } from "./settings/api.js";
 import { productsUrl } from "./settings/api.js";
+import { getProducts } from "./utils/cartItems.js";
 import createMenu from "./components/createMenu.js";
 
 createMenu();
@@ -10,8 +11,6 @@ const id = params.get("id");
 const finalId = parseInt(id);
 const url = productsUrl + "/" + finalId;
 const container = document.querySelector(".product-container");
-
-console.log(url);
 
 (async function callApi() {
   try {
@@ -26,7 +25,6 @@ console.log(url);
 })();
 
 function createProduct(product) {
-  console.log(product.image.url);
   container.innerHTML = `
   <div class="row gx-5">
     <div class="col-md">
@@ -39,11 +37,44 @@ function createProduct(product) {
         <h1>${product.title}</h1>
         <p>${product.description}</p>
         <h4>$ ${product.price}</h4>
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
-                Primary button
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3 cart-btn">
+                Add to cart
               </button>
       
     </div>
     </div>
   `;
+
+  const title = product.title;
+  const price = product.price;
+  const image = baseUrl + product.image.url;
+  const cartButton = document.querySelector(".cart-btn");
+
+  cartButton.addEventListener("click", handleClick);
+
+  function handleClick() {
+    const addToCart = getProducts();
+
+    const product = {
+      id: finalId,
+      title: title,
+      price: "$ " + price,
+      image: image,
+    };
+
+    const doesObjectExist = addToCart.find(function (prod) {
+      return parseInt(prod.id) === product.id;
+    });
+
+    if (doesObjectExist) {
+      return false;
+    } else {
+      console.log(doesObjectExist);
+      addToCart.push(product);
+      saveCart(addToCart);
+    }
+  }
+  function saveCart(prods) {
+    localStorage.setItem("products", JSON.stringify(prods));
+  }
 }

@@ -24,7 +24,7 @@ const container = document.querySelector(".product-container");
   }
 })();
 
-function createProduct(product) {
+export function createProduct(product) {
   container.innerHTML = `
   <div class="row gx-5">
     <div class="col-md">
@@ -37,7 +37,7 @@ function createProduct(product) {
         <h1>${product.title}</h1>
         <p>${product.description}</p>
         <h4>$ ${product.price}</h4>
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3 cart-btn">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3 cart-btn" data-id="${id}">
                 Add to cart
               </button>
       
@@ -48,7 +48,7 @@ function createProduct(product) {
   const title = product.title;
   const price = product.price;
   const image = baseUrl + product.image.url;
-  const cartButton = document.querySelector(".cart-btn");
+  let cartButton = document.querySelector(".cart-btn");
 
   cartButton.addEventListener("click", handleClick);
 
@@ -67,9 +67,9 @@ function createProduct(product) {
     });
 
     if (doesObjectExist) {
-      return false;
+      // const cartButton = document.querySelector(".cart-btn");
+      // cartButton.innerHTML = `Already in cart`;
     } else {
-      console.log(doesObjectExist);
       addToCart.push(product);
       saveCart(addToCart);
     }

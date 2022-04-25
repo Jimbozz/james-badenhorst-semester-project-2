@@ -29,7 +29,7 @@ export default function createMenu() {
                 }" href="/public/products.html">Products</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/public/products.html">Sign in</a>
+                <a class="nav-link" href="/public/login.html">Sign in</a>
               </li>
             </ul>
             <form class="d-flex">

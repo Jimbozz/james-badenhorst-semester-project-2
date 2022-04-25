@@ -7,3 +7,15 @@ export function getProducts() {
     return JSON.parse(cartItem);
   }
 }
+
+// export const alreadyInCart = (id) => {
+//   const cart = getProducts();
+//   console.log(cart);
+//   return cart.includes(id.toString());
+// };
+
+// const total = getProducts(price);
+
+// export function cartTotal(price) {
+//   console.log(getProducts(price));
+// }

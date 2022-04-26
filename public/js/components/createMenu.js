@@ -1,6 +1,30 @@
+import { getUserName } from "../utils/storage.js";
+import logoutButton from "./logoutButton.js";
+
 export default function createMenu() {
   const container = document.querySelector(".nav-container");
   const { pathname } = document.location;
+  const username = getUserName();
+
+  let authlink = `
+              <li class="nav-item">
+                <a class="nav-link ${
+                  pathname === "/public/login.html" ? "active" : ""
+                }" href="/public/login.html">Sign in</a>
+              </li>
+              `;
+  if (username) {
+    authlink = `
+              <li class="nav-item">
+                <a class="nav-link ${
+                  pathname === "/public/add.html" ? "active" : ""
+                }" href="/public/add.html">Add product</a>
+                <button type="button" class="btn btn-primary btn-lg px-4 gap-3" id="logout">
+                Logout: ${username}
+              </button>
+              </li>
+              `;
+  }
 
   container.innerHTML = `<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -28,9 +52,7 @@ export default function createMenu() {
                   pathname === "/public/products.html" ? "active" : ""
                 }" href="/public/products.html">Products</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/public/login.html">Sign in</a>
-              </li>
+              ${authlink}
             </ul>
             <form class="d-flex">
               <input
@@ -46,4 +68,6 @@ export default function createMenu() {
           </div>
         </div>
       </nav>`;
+
+  logoutButton();
 }

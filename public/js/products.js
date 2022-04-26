@@ -1,13 +1,15 @@
 import { productsUrl } from "./settings/api.js";
 import { baseUrl } from "./settings/api.js";
+import displayMessage from "./components/displayMessage.js";
 import { searchProducts } from "./components/searchProducts.js";
 import createMenu from "./components/createMenu.js";
+
+const messageContainer = document.querySelector(".message-container");
+const container = document.querySelector(".products-container");
 
 createMenu();
 
 export function createProducts(renderProducts) {
-  const container = document.querySelector(".products-container");
-
   container.innerHTML = "";
 
   renderProducts.forEach(function (product) {
@@ -36,5 +38,11 @@ export function createProducts(renderProducts) {
     searchProducts(json);
   } catch (error) {
     console.log(error);
+    container.innerHTML = "";
+    displayMessage(
+      "alert-danger",
+      "There was an error loading, please reload the page.",
+      ".message-container"
+    );
   }
 })();

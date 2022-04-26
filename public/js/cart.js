@@ -1,7 +1,7 @@
 import { getProducts } from "./utils/cartItems.js";
 // import { productCard } from "./practice.js";
 // import { cartTotal } from "./utils/cartItems.js";
-
+import displayMessage from "./components/displayMessage.js";
 import createMenu from "./components/createMenu.js";
 
 const products = getProducts();

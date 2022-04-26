@@ -19,10 +19,15 @@ export default function createMenu() {
                 <a class="nav-link ${
                   pathname === "/public/add.html" ? "active" : ""
                 }" href="/public/add.html">Add product</a>
-                <button type="button" class="btn btn-primary btn-lg px-4 gap-3" id="logout">
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ${
+                  pathname === "/public/edit.html" ? "active" : ""
+                }" href="/public/edit.html">Edit products</a>
+              </li>
+              <button type="button" class="btn btn-sm btn-outline-secondary px-4 gap-3" id="logout">
                 Logout: ${username}
               </button>
-              </li>
               `;
   }
 
@@ -53,18 +58,12 @@ export default function createMenu() {
                 }" href="/public/products.html">Products</a>
               </li>
               ${authlink}
+              <li>
+                <a href="/public/cart.html">
+                  <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
+                </a>
+              </li>
             </ul>
-            <form class="d-flex">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-            </form>
-            <a href="/public/cart.html">
-              <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
-            </a>
           </div>
         </div>
       </nav>`;

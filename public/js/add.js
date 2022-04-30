@@ -10,7 +10,7 @@ const message = document.querySelector(".message-container");
 const title = document.querySelector("#title");
 const price = document.querySelector("#price");
 const description = document.querySelector("#description");
-const img = document.querySelector("#img");
+const image = document.querySelector("#img");
 
 form.addEventListener("submit", formSubmit);
 
@@ -20,19 +20,17 @@ function formSubmit(event) {
   message.innerHTML = "";
 
   const titleValue = title.value.trim();
-  const priceValue = price.value.trim();
+  // const priceValue = price.value.trim();
+  const priceValue = parseFloat(price.value);
   const descriptionValue = description.value.trim();
-  const imgValue = img.files[0];
+  // const imgValue = img.files[0];
+  const imageValue = image.value;
+  console.log(imageValue);
 
   if (
     titleValue.length === 0 ||
     priceValue.length === 0 ||
-    descriptionValue === 0 ||
-    img.files.length === 0 ||
-    imgValue.size > 200000000 ||
-    (imgValue.type !== "image/jpeg" &&
-      imgValue.type !== "image/jpg" &&
-      imgValue.type !== "image/png")
+    descriptionValue === 0
   ) {
     return displayMessage(
       "alert-warning",
@@ -41,24 +39,25 @@ function formSubmit(event) {
     );
   }
 
-  addProduct(titleValue, priceValue, descriptionValue, imgValue);
+  addProduct(titleValue, priceValue, descriptionValue, imageValue);
 }
 
-async function addProduct(titleValue, priceValue, descriptionValue, imgValue) {
+async function addProduct(title, price, description, image) {
   const url = productsUrl;
   const data = JSON.stringify({
-    title: titleValue,
-    price: priceValue,
-    description: descriptionValue,
+    title: title,
+    price: price,
+    description: description,
+    image_url: image,
   });
 
   const token = getToken();
 
   //fetch product image
 
-  const formData = new FormData();
-  formData.append("files.image", imgValue, imgValue.name);
-  formData.append("data", JSON.stringify(data));
+  // const formData = new FormData();
+  // formData.append("files.image", imgValue, imgValue.name);
+  // formData.append("data", JSON.stringify(data));
 
   //
   const options = {

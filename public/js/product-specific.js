@@ -58,7 +58,7 @@ export function createProduct(product) {
     const product = {
       id: finalId,
       title: title,
-      price: "$ " + price,
+      price: price,
       image: image,
     };
 

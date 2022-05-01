@@ -37,6 +37,16 @@ products.forEach((product) => {
   `;
 });
 
-// products.forEach((product) => {
-//   cartContainer.innerHTML += `${productCard(product)}`;
-// });
+/* total price */
+const totalContainer = document.querySelector(".total-container");
+
+let totalPrice = 0;
+
+for (let i = 0; i < products.length; i++) {
+  let price = parseFloat(products[i].price);
+  totalPrice += price;
+  console.log(products[i].price);
+}
+console.log(totalPrice);
+
+totalContainer.innerHTML = totalPrice;

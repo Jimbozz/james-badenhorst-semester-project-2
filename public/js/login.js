@@ -55,7 +55,7 @@ async function executeLogin(username, password) {
       saveToken(json.jwt);
       saveUser(json.user);
 
-      location.href = "/public/index.html";
+      location.href = "/public/products.html";
     }
 
     if (json.error) {

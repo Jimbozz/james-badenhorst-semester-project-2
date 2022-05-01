@@ -48,7 +48,7 @@ async function addProduct(title, price, description, imageValue) {
     title: title,
     price: price,
     description: description,
-    image_url: imageValue,
+    image: imageValue,
   });
 
   const token = getToken();

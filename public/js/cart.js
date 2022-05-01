@@ -26,7 +26,7 @@ products.forEach((product) => {
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">${product.title}</h5>
-        <p class="card-text">${product.price}</p>
+        <p class="card-text">$${product.price}</p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
       <a href="/public/product-specific.html?id=${product.id}" class="stretched-link"></a>
@@ -49,4 +49,4 @@ for (let i = 0; i < products.length; i++) {
 }
 console.log(totalPrice);
 
-totalContainer.innerHTML = totalPrice;
+totalContainer.innerHTML += totalPrice;

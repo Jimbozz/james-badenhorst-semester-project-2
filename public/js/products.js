@@ -4,6 +4,7 @@ import displayMessage from "./components/displayMessage.js";
 import { searchProducts } from "./components/searchProducts.js";
 import createMenu from "./components/createMenu.js";
 import { getUserName } from "./utils/storage.js";
+import deleteProduct from "./components/deleteProduct.js";
 
 const messageContainer = document.querySelector(".message-container");
 const container = document.querySelector(".products-container");
@@ -16,24 +17,26 @@ export function createProducts(renderProducts) {
 
   if (username) {
     renderProducts.forEach(function (product) {
+      // const button = document.querySelectorAll(".delete-btn");
+
       container.innerHTML += `<div class="col">
-      <div class="card h-100 border-0 shadow bg-body">
-        <div class="ratio ratio-1x1">
-          <img src="${baseUrl}${product.image.url}" class="card-img-top img-fluid" alt="${product.image.alternativeText}">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">${product.title}</h5>
-          <p class="card-text">$ ${product.price}</p>
-          <a href="/public/product-specific.html?id=${product.id}" class="card-link">View product</a>
-        </div>
-        <div class="card-body">
-          <a href="/public/edit.html?id=${product.id}" class="card-link btn btn-info"><i class="bi bi-pencil-square"></i>
-          </a>
-          <button type="button" class="btn btn-danger delete-btn"><i class="bi bi-trash-fill"></i></button>
+        <div class="card h-100 border-0 shadow bg-body">
+          <div class="ratio ratio-1x1">
+            <img src="${baseUrl}${product.image.url}" class="card-img-top img-fluid" alt="${product.image.alternativeText}">
           </div>
-        
-      </div>
-    </div>`;
+          <div class="card-body">
+            <h5 class="card-title">${product.title}</h5>
+            <p class="card-text">$ ${product.price}</p>
+            <a href="/public/product-specific.html?id=${product.id}" class="card-link">View product</a>
+          </div>
+          <div class="card-body">
+            <a href="/public/edit.html?id=${product.id}" class="card-link btn btn-info"><i class="bi bi-pencil-square"></i>
+            </a>
+            <button type="button" class="btn btn-danger delete-btn" data-id="${product.id}"><i class="bi bi-trash-fill"></i></button>
+            </div>
+        </div>
+      </div>`;
+      deleteProduct(product.id);
     });
   } else {
     renderProducts.forEach(function (product) {
@@ -45,9 +48,8 @@ export function createProducts(renderProducts) {
         <div class="card-body">
           <h5 class="card-title">${product.title}</h5>
           <p class="card-text">$ ${product.price}</p>
-          
+          <a href="/public/product-specific.html?id=${product.id}" class="card-link">View product</a>
         </div>
-        <a href="/public/product-specific.html?id=${product.id}" class="stretched-link"></a>
       </div>
     </div>`;
     });

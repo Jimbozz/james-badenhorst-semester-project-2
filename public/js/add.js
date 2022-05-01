@@ -1,7 +1,7 @@
 import displayMessage from "./components/displayMessage.js";
 import createMenu from "./components/createMenu.js";
 import { getToken } from "./utils/storage.js";
-import { baseUrl, productsUrl } from "./settings/api.js";
+import { productsUrl } from "./settings/api.js";
 
 createMenu();
 
@@ -42,13 +42,13 @@ function formSubmit(event) {
   addProduct(titleValue, priceValue, descriptionValue, imageValue);
 }
 
-async function addProduct(title, price, description, image) {
+async function addProduct(title, price, description, imageValue) {
   const url = productsUrl;
   const data = JSON.stringify({
     title: title,
     price: price,
     description: description,
-    image_url: image,
+    image_url: imageValue,
   });
 
   const token = getToken();

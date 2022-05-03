@@ -28,15 +28,11 @@ export function createProducts(renderProducts) {
             <h5 class="card-title">${product.title}</h5>
             <p class="card-text">$ ${product.price}</p>
             <a href="/public/product-specific.html?id=${product.id}" class="card-link">View product</a>
-          </div>
-          <div class="card-body">
             <a href="/public/edit.html?id=${product.id}" class="card-link btn btn-info"><i class="bi bi-pencil-square"></i>
             </a>
-            <button type="button" class="btn btn-danger delete-btn" data-id="${product.id}"><i class="bi bi-trash-fill"></i></button>
-            </div>
+          </div>
         </div>
       </div>`;
-      deleteProduct(product.id);
     });
   } else {
     renderProducts.forEach(function (product) {

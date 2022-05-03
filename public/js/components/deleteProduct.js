@@ -4,10 +4,12 @@ import { productsUrl } from "../settings/api.js";
 import displayMessage from "./displayMessage.js";
 
 export default function deleteProduct(id) {
+  // const container = document.querySelector(".button-container");
   const button = document.querySelector(".delete-btn");
 
   button.onclick = async function () {
-    console.log(this.dataset.id);
+    console.log(id);
+    const id = button.getAttribute("data-id");
     const deleteCheck = confirm(
       "Are you sure you want to delete this product?"
     );

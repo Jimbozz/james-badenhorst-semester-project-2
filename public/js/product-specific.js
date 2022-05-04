@@ -16,7 +16,6 @@ const container = document.querySelector(".product-container");
   try {
     const response = await fetch(url);
     const json = await response.json();
-    console.log(json);
 
     createProduct(json);
   } catch (error) {
@@ -24,7 +23,21 @@ const container = document.querySelector(".product-container");
   }
 })();
 
-export function createProduct(product) {
+function createProduct(product) {
+  const addToCart = getProducts();
+  console.log(addToCart);
+  let addToCartStyle = "";
+  let cartText = "Add to cart";
+
+  const doesObjectExist = addToCart.find(function (prod) {
+    return parseInt(product.id) === prod.id;
+  });
+
+  if (doesObjectExist) {
+    cartText = "Already in cart";
+    // addToCartBtnCss = "added-to-cart";
+  }
+
   container.innerHTML = `
   <div class="row gx-5">
     <div class="col-md">
@@ -33,45 +46,43 @@ export function createProduct(product) {
       </div>
     </div>
     <div class="col-md">
-      
         <h1>${product.title}</h1>
         <p>${product.description}</p>
         <h4>$ ${product.price}</h4>
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3 cart-btn" data-id="${id}">
-                Add to cart
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3 cart-btn ${addToCartStyle}" data-id="${product.id}">
+                ${cartText}
               </button>
-      
     </div>
     </div>
   `;
 
   const title = product.title;
   const price = product.price;
-  const image = baseUrl + product.image.url;
-  let cartButton = document.querySelector(".cart-btn");
+  const image = product.image.url;
+  const description = product.description;
+  const cartButton = document.querySelector(".cart-btn");
 
   cartButton.addEventListener("click", handleClick);
 
   function handleClick() {
-    const addToCart = getProducts();
-
     const product = {
       id: finalId,
       title: title,
       price: price,
       image: image,
+      description: description,
     };
-
-    const doesObjectExist = addToCart.find(function (prod) {
-      return parseInt(prod.id) === product.id;
-    });
 
     if (doesObjectExist) {
       // const cartButton = document.querySelector(".cart-btn");
       // cartButton.innerHTML = `Already in cart`;
+
+      console.log("hello");
     } else {
+      console.log("Added to cart");
       addToCart.push(product);
       saveCart(addToCart);
+      createProduct(product);
     }
   }
   function saveCart(prods) {

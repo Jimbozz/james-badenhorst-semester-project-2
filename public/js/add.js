@@ -55,7 +55,7 @@ async function addProduct(
     price: priceValue,
     description: descriptionValue,
     featured: featuredCheck,
-    image_url: imageValue.file,
+    image: imageValue.name,
   });
 
   const token = getToken();

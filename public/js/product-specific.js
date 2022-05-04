@@ -9,7 +9,7 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
 const finalId = parseInt(id);
-const url = productsUrl + "/" + finalId;
+const url = productsUrl + finalId;
 const container = document.querySelector(".product-container");
 
 (async function callApi() {

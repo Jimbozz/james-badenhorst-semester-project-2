@@ -29,7 +29,8 @@ function formSubmit(event) {
   if (
     titleValue.length > 1 &&
     priceValue.length > 2 &&
-    descriptionValue.length > 5
+    descriptionValue.length > 5 &&
+    imageValue
   ) {
     addProduct(
       titleValue,
@@ -54,13 +55,14 @@ async function addProduct(
     price: priceValue,
     description: descriptionValue,
     featured: featuredCheck,
-    image: imageValue,
+    image_url: imageValue.file,
   });
 
   const token = getToken();
+  const file = imageValue;
 
   const formData = new FormData();
-  formData.append(`file.${image.name}`, imageValue, imageValue.name);
+  formData.append(`files.${imageValue.name}`, file, file.name);
   formData.append("data", JSON.stringify(data));
 
   const options = {
@@ -72,7 +74,6 @@ async function addProduct(
     },
   };
 
-  console.log(imageValue.name);
   try {
     const response = await fetch(url, options);
     const json = await response.json();

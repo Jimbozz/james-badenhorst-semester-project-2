@@ -49,33 +49,34 @@ async function addProduct(
   featuredCheck,
   imageValue
 ) {
-  const url = productsUrl;
-  const data = JSON.stringify({
+  const data = {
     title: titleValue,
     price: priceValue,
     description: descriptionValue,
     featured: featuredCheck,
-    image: imageValue.name,
-  });
-
-  const token = getToken();
-  const file = imageValue;
+  };
 
   const formData = new FormData();
-  formData.append(`files.${imageValue.name}`, file, file.name);
+  formData.append("files.image", imageValue, imageValue.name);
   formData.append("data", JSON.stringify(data));
+  console.log(imageValue);
+  // if (image.type === "file") {
+  //   const file = image.files[0];
+  //   console.log(file);
+  //   formData.append(`files.${image.name}`, file, file.name);
+  // }
 
+  const token = getToken();
   const options = {
     method: "POST",
-    body: data,
+    body: formData,
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   };
 
   try {
-    const response = await fetch(url, options);
+    const response = await fetch(productsUrl, options);
     const json = await response.json();
     console.log(json);
 

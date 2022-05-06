@@ -30,11 +30,11 @@ function createProduct(product) {
   let cartText = "Add to cart";
 
   const doesObjectExist = addToCart.find(function (prod) {
-    return parseInt(product.id) === prod.id;
+    return parseInt(prod.id) === product.id;
   });
 
   if (doesObjectExist) {
-    cartText = "Already in cart";
+    cartText = "Remove from cart";
     // addToCartBtnCss = "added-to-cart";
   }
 
@@ -65,17 +65,25 @@ function createProduct(product) {
   cartButton.addEventListener("click", handleClick);
 
   function handleClick() {
-    const product = {
-      id: finalId,
-      title: title,
-      price: price,
-      image: image,
-      description: description,
-    };
+    const id = this.dataset.id;
+    const productExists = addToCart.find(function (item) {
+      return item.id === id;
+    });
+    if (productExists === undefined) {
+      const product = {
+        id: id,
+        title: title,
+        price: price,
+        image: image,
+        description: description,
+      };
+      addToCart.push(product);
+      saveCart(addToCart);
+    } else {
+      const newProducts = addToCart.filter((item) => item.id !== id);
+      saveCart(newProducts);
+    }
 
-    console.log("Added to cart");
-    addToCart.push(product);
-    saveCart(addToCart);
     createProduct(product);
   }
   function saveCart(prods) {

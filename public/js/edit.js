@@ -81,7 +81,7 @@ async function updateProduct(
   featuredCheck,
   imageValue
 ) {
-  const data = {
+  let data = {
     title: titleValue,
     price: priceValue,
     description: descriptionValue,
@@ -93,10 +93,11 @@ async function updateProduct(
   formData.append("data", JSON.stringify(data));
 
   const token = getToken();
-  // data = formData;
+  data = formData;
+
   const options = {
     method: "PUT",
-    body: formData,
+    body: data,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -105,7 +106,8 @@ async function updateProduct(
   try {
     const response = await fetch(itemUrl, options);
     const json = await response.json();
-    console.log("json", json);
+    console.log(json);
+    console.log("trying");
 
     if (json.updated_at) {
       displayMessage(
@@ -114,8 +116,6 @@ async function updateProduct(
         ".message-container"
       );
       console.log("this was updated");
-      // const image = document.querySelector(".img");
-      // image.style = `background: url('/public/${json.image.url}') center no-repeat; background-size: cover; width: 100%; height: 20rem;`;
     }
     if (json.error) {
       displayMessage("error", json.message, ".message-container");

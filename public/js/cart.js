@@ -1,4 +1,5 @@
 import { getProducts } from "./utils/cartItems.js";
+import { baseUrl } from "./settings/api.js";
 // import { productCard } from "./practice.js";
 // import { cartTotal } from "./utils/cartItems.js";
 import displayMessage from "./components/displayMessage.js";
@@ -21,7 +22,7 @@ products.forEach((product) => {
     <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="${product.image}" class="img-fluid rounded-start" alt="...">
+      <img src="${baseUrl}${product.image.url}" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">

@@ -14,7 +14,7 @@ if (!id) {
   document.location.href = "/public/products.html";
 }
 
-const itemUrl = productsUrl + "/" + id;
+const itemUrl = productsUrl + id;
 
 const form = document.querySelector("form");
 const message = document.querySelector(".message-container");
@@ -22,8 +22,9 @@ const title = document.querySelector("#title");
 const price = document.querySelector("#price");
 const description = document.querySelector("#description");
 const idInput = document.querySelector("#id");
-const img = document.querySelector(".img");
-const imgFile = document.querySelector("#imgfile");
+const image = document.querySelector(".img");
+const featured = document.querySelector("#featured");
+const imageFile = document.querySelector("#imgfile");
 
 (async function () {
   try {
@@ -36,7 +37,8 @@ const imgFile = document.querySelector("#imgfile");
     price.value = json.price;
     description.value = json.description;
     idInput.value = json.id;
-    img.style = `background: url('/public/${json.image.url}') center no-repeat; background-size: cover; width: 100%; height: 20rem;`;
+    image.style = `background: url('/public/${json.image.url}') center no-repeat; background-size: cover; width: 100%; height: 20rem;`;
+    featured.checked = json.featured;
 
     // deleteArticle(json.id);
   } catch (error) {
@@ -52,31 +54,50 @@ function formSubmit(event) {
   const titleValue = title.value.trim();
   const priceValue = price.value.trim();
   const descriptionValue = description.value.trim();
-  // const imgValue = img.files[0];
+  const imageValue = imageFile.files[0];
+  const featuredCheck = featured.checked;
 
   if (
     titleValue.length > 1 &&
     priceValue.length > 2 &&
-    descriptionValue.length > 5
+    descriptionValue.length > 5 &&
+    imageValue
     // && img.files.length > 0
   ) {
-    updateProduct(titleValue, priceValue, descriptionValue);
+    updateProduct(
+      titleValue,
+      priceValue,
+      descriptionValue,
+      featuredCheck,
+      imageValue
+    );
   }
 }
 
-async function updateProduct(titleValue, priceValue, descriptionValue) {
-  const data = JSON.stringify({
+async function updateProduct(
+  titleValue,
+  priceValue,
+  descriptionValue,
+  featuredCheck,
+  imageValue
+) {
+  const data = {
     title: titleValue,
     price: priceValue,
     description: descriptionValue,
-  });
-  const token = getToken();
+    featured: featuredCheck,
+  };
 
+  const formData = new FormData();
+  formData.append("files.image", imageValue, imageValue.name);
+  formData.append("data", JSON.stringify(data));
+
+  const token = getToken();
+  // data = formData;
   const options = {
     method: "PUT",
-    body: data,
+    body: formData,
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   };
@@ -84,7 +105,7 @@ async function updateProduct(titleValue, priceValue, descriptionValue) {
   try {
     const response = await fetch(itemUrl, options);
     const json = await response.json();
-    console.log(json);
+    console.log("json", json);
 
     if (json.updated_at) {
       displayMessage(
@@ -92,6 +113,9 @@ async function updateProduct(titleValue, priceValue, descriptionValue) {
         `You have successfully updated article: ${json.title}`,
         ".message-container"
       );
+      console.log("this was updated");
+      // const image = document.querySelector(".img");
+      // image.style = `background: url('/public/${json.image.url}') center no-repeat; background-size: cover; width: 100%; height: 20rem;`;
     }
     if (json.error) {
       displayMessage("error", json.message, ".message-container");

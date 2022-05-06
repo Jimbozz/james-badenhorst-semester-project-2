@@ -58,7 +58,7 @@ function createProduct(product) {
 
   const title = product.title;
   const price = product.price;
-  const image = product.image.url;
+  const image = product.image;
   const description = product.description;
   const cartButton = document.querySelector(".cart-btn");
 
@@ -73,17 +73,10 @@ function createProduct(product) {
       description: description,
     };
 
-    if (doesObjectExist) {
-      // const cartButton = document.querySelector(".cart-btn");
-      // cartButton.innerHTML = `Already in cart`;
-
-      console.log("hello");
-    } else {
-      console.log("Added to cart");
-      addToCart.push(product);
-      saveCart(addToCart);
-      createProduct(product);
-    }
+    console.log("Added to cart");
+    addToCart.push(product);
+    saveCart(addToCart);
+    createProduct(product);
   }
   function saveCart(prods) {
     localStorage.setItem("products", JSON.stringify(prods));

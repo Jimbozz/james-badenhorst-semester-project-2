@@ -16,16 +16,35 @@
       <div class="wrapper">
         <div class="nav-container"></div>
         <div class="container my-5 text-center">
+          <div class="loading">Loading Edit form...</div>
           <form>
             <h1>Add a product</h1>
             <div class="message-container"></div>
             <div class="mb-3">
               <label for="title" class="form-label">Product name</label>
-              <input class="form-control" id="title" aria-describedby="title" />
+              <input
+                class="form-control"
+                id="title"
+                aria-describedby="titleHelp"
+                placeholder="Product name"
+              />
+              <div id="titleError" class="form-text error error-name">
+                Product names should be 1-14 characters.
+              </div>
             </div>
             <div class="mb-3">
               <label for="price" class="form-label">Product price</label>
-              <input type="number" class="form-control" id="price" step=".01" />
+              <input
+                type="number"
+                class="form-control"
+                id="price"
+                step=".01"
+                aria-describedby="priceHelp"
+                placeholder="$100"
+              />
+              <div id="priceError" class="form-text error error-price">
+                Price should be larger than $0
+              </div>
             </div>
             <div class="mb-3">
               <label for="description" class="form-label"
@@ -37,7 +56,14 @@
                 id="description"
                 rows="5"
                 cols="33"
+                placeholder="Product description"
               ></textarea>
+              <div
+                id="descriptionError"
+                class="form-text error error-description"
+              >
+                Your description should be longer than 10 characters.
+              </div>
             </div>
             <div class="mb-3">
               <div class="img"></div>
@@ -47,7 +73,8 @@
                 >To update/change the product image click here. Choose only
                 (PNG, JPG) files.</label
               >
-              <input id="imgfile" type="file" />
+              <input id="imgfile" type="file" accept="image/png, image/jpeg" />
+              <div id="imageError" class="form-text error error-image"></div>
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="featured" />

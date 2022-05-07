@@ -18,6 +18,7 @@ const itemUrl = productsUrl + id;
 
 const form = document.querySelector("form");
 const message = document.querySelector(".message-container");
+const loading = document.querySelector(".loading");
 const title = document.querySelector("#title");
 const price = document.querySelector("#price");
 const description = document.querySelector("#description");
@@ -43,6 +44,8 @@ const imageFile = document.querySelector("#imgfile");
     // deleteArticle(json.id);
   } catch (error) {
     console.log(error);
+  } finally {
+    loading.style.display = "none";
   }
 })();
 
@@ -56,49 +59,100 @@ function formSubmit(event) {
   const descriptionValue = description.value.trim();
   const imageValue = imageFile.files[0];
   const featuredCheck = featured.checked;
+  const idValue = idInput.value;
+
+  // Product name error
+  const nameError = document.querySelector("#titleError");
+  if (titleValue.length < 1 || titleValue.length > 14) {
+    nameError.style.display = "block";
+  } else {
+    nameError.style.display = "none";
+  }
+
+  // Price error
+  const priceError = document.querySelector("#priceError");
+  if (priceValue <= 0 || isNaN(priceValue)) {
+    priceError.style.display = "block";
+  } else {
+    priceError.style.display = "none";
+  }
+
+  // Description error
+  const descriptionError = document.querySelector("#descriptionError");
+  if (descriptionValue.length < 10) {
+    descriptionError.style.display = "block";
+  } else {
+    descriptionError.style.display = "none";
+  }
+
+  // Description error
+  const imageError = document.querySelector("#descriptionError");
+  if (imageFile.length > 0) {
+    imageError.style.display = "block";
+  } else {
+    imageError.style.display = "none";
+  }
 
   if (
     titleValue.length > 1 &&
-    priceValue.length > 2 &&
-    descriptionValue.length > 5 &&
-    imageValue
-    // && img.files.length > 0
+    titleValue.length < 15 &&
+    descriptionValue.length > 10 &&
+    priceValue.length > 0 &&
+    !isNaN(priceValue) &&
+    priceValue != 0 &&
+    idValue
   ) {
     updateProduct(
       titleValue,
       priceValue,
       descriptionValue,
       featuredCheck,
-      imageValue
+      imageValue,
+      idValue
     );
   }
+  // if (
+  //   titleValue.length === 0 ||
+  //   priceValue.length === 0 ||
+  //   descriptionValue.length === 0 ||
+  //   imageFile.length > 0
+  //   // && img.files.length > 0
+  // ) {
+  //   return displayMessage(
+  //     "alert-danger",
+  //     "There was an error loading, please reload the page.",
+  //     ".message-container"
+  //   );
+  // }
 }
 
 async function updateProduct(
-  titleValue,
-  priceValue,
-  descriptionValue,
+  title,
+  price,
+  description,
   featuredCheck,
-  imageValue
+  image,
+  id
 ) {
-  let data = {
-    title: titleValue,
-    price: priceValue,
-    description: descriptionValue,
+  const data = JSON.stringify({
+    title: title,
+    price: price,
+    description: description,
     featured: featuredCheck,
-  };
+  });
 
   const formData = new FormData();
-  formData.append("files.image", imageValue, imageValue.name);
-  formData.append("data", JSON.stringify(data));
-
+  formData.append("file", imageFile.files[0]);
+  formData.append("data", data);
+  // console.log(imageValue);
   const token = getToken();
-  data = formData;
+  // data = formData;
 
   const options = {
     method: "PUT",
     body: data,
     headers: {
+      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   };
@@ -106,6 +160,7 @@ async function updateProduct(
   try {
     const response = await fetch(itemUrl, options);
     const json = await response.json();
+    console.log(data);
     console.log(json);
     console.log("trying");
 

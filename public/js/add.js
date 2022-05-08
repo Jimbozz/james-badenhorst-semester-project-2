@@ -81,11 +81,12 @@ async function addProduct(
     console.log(json);
 
     if (json.created_at) {
-      // displayMessage(
-      //   "success",
-      //   "Successfully created article.",
-      //   ".message-container"
-      // );
+      displayMessage(
+        "success",
+        "Successfully created article.",
+        ".message-container"
+      );
+      formElement.reset();
       console.log("success");
     }
   } catch (error) {

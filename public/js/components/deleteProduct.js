@@ -5,8 +5,8 @@ import displayMessage from "./displayMessage.js";
 
 export default function deleteProduct(id) {
   const container = document.querySelector(".delete-container");
-  container.innerHTML = `<button type="button" class="btn btn-danger">Delete</button>`;
-  const button = document.querySelector(".btn-danger");
+  container.innerHTML = `<button type="button" class="btn btn-outline-danger">Delete</button>`;
+  const button = document.querySelector(".btn-outline-danger");
   const value = getToken();
 
   if (!value) {
@@ -19,6 +19,7 @@ export default function deleteProduct(id) {
   }
 
   button.onclick = async function () {
+    const form = document.querySelector("form");
     // const id = button.getAttribute("data-id");
     const deleteCheck = confirm(
       "Are you sure you want to delete this product?"
@@ -38,9 +39,28 @@ export default function deleteProduct(id) {
         const response = await fetch(url, options);
         const json = await response.json();
 
+        if (json.error) {
+          displayMessage(
+            "alert-danger",
+            "Something went wrong. Please reload the page and try again.",
+            ".message-container"
+          );
+        } else {
+          displayMessage(
+            "alert-success",
+            "The product was successfully deleted",
+            ".message-container"
+          );
+        }
+
         location.href = "/public/products.html";
       } catch (error) {
         console.log(error);
+        displayMessage(
+          "alert-danger",
+          "Something went wrong. Please reload the page and try again.",
+          ".message-container"
+        );
       }
     }
   };

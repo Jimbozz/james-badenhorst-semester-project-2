@@ -21,7 +21,7 @@
             <h1>Add a product</h1>
             <div class="message-container"></div>
             <div class="mb-3">
-              <label for="title" class="form-label"></label>
+              <label for="title" class="form-label">Product name</label>
               <input
                 class="form-control"
                 id="title"
@@ -83,8 +83,12 @@
               >
             </div>
             <input id="id" hidden />
-            <button id="update" class="btn btn-primary">Update product</button>
-            <div class="delete-container"></div>
+            <div class="mb-3 d-flex">
+              <button id="update" class="btn btn-primary">
+                Update product
+              </button>
+              <div class="delete-container"></div>
+            </div>
           </form>
         </div>
       </div>

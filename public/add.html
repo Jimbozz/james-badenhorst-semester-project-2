@@ -27,7 +27,11 @@
                 aria-describedby="title"
                 type="text"
                 for="name"
+                placeholder="Product name"
               />
+              <div id="titleError" class="form-text error error-name">
+                Product names should be 1-14 characters.
+              </div>
             </div>
             <div class="mb-3">
               <label for="price" class="form-label">Product price</label>
@@ -36,7 +40,11 @@
                 class="form-control"
                 id="price"
                 for="price"
+                placeholder="$100"
               />
+              <div id="priceError" class="form-text error error-price">
+                Price should be larger than $0
+              </div>
             </div>
             <div class="mb-3">
               <label for="description" class="form-label"
@@ -48,13 +56,29 @@
                 id="description"
                 rows="5"
                 cols="33"
+                placeholder="Product description"
               ></textarea>
+              <div
+                id="descriptionError"
+                class="form-text error error-description"
+              >
+                Your description should be longer than 10 characters.
+              </div>
             </div>
             <div class="mb-3">
               <label for="img" class="form-label"
                 >Choose images to upload (PNG, JPG)</label
               >
-              <input class="form-control" type="file" name="cover" id="img" />
+              <input
+                class="form-control"
+                type="file"
+                name="cover"
+                id="img"
+                accept="image/png, image/jpeg"
+              />
+              <div id="imageError" class="form-text error error-image">
+                Your file should be smaller than 200MB.
+              </div>
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="featured" />

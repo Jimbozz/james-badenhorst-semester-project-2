@@ -1,5 +1,6 @@
 const tokenKey = "token";
 const userKey = "user";
+const productKey = "products";
 
 export function saveToken(token) {
   saveToStorage(tokenKey, token);
@@ -22,6 +23,20 @@ export function getUserName() {
   return null;
 }
 
+export function saveCart(products) {
+  saveToStorage(productKey, products);
+}
+
+// export function getProducts() {
+//   const cartItem = getFromStorage(productKey);
+
+//   if (cartItem === null) {
+//     return [];
+//   } else {
+//     return cartItem;
+//   }
+// }
+
 export function clearStorage() {
   // localStorage.clear();
   localStorage.removeItem("token");
@@ -40,4 +55,14 @@ function getFromStorage(key) {
   }
 
   return JSON.parse(value);
+}
+
+export function getProducts() {
+  const cartItem = getFromStorage(productKey);
+
+  if (cartItem === null) {
+    return [];
+  } else {
+    return cartItem;
+  }
 }

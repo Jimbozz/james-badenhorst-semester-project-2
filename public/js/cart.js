@@ -1,7 +1,5 @@
-import { getProducts } from "./utils/cartItems.js";
+import { getProducts } from "./utils/storage.js";
 import { baseUrl } from "./settings/api.js";
-// import { productCard } from "./practice.js";
-// import { cartTotal } from "./utils/cartItems.js";
 import displayMessage from "./components/displayMessage.js";
 import createMenu from "./components/createMenu.js";
 

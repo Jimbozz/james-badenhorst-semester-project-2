@@ -1,10 +1,9 @@
-import { productsUrl } from "./settings/api.js";
-import { baseUrl } from "./settings/api.js";
+import { baseUrl, productsUrl } from "./settings/api.js";
+// import { baseUrl } from "./settings/api.js";
 import displayMessage from "./components/displayMessage.js";
 import { searchProducts } from "./components/searchProducts.js";
 import createMenu from "./components/createMenu.js";
 import { getUserName } from "./utils/storage.js";
-import deleteProduct from "./components/deleteProduct.js";
 
 const messageContainer = document.querySelector(".message-container");
 const container = document.querySelector(".products-container");

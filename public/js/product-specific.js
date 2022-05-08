@@ -1,6 +1,6 @@
 import { baseUrl } from "./settings/api.js";
 import { productsUrl } from "./settings/api.js";
-import { getProducts } from "./utils/cartItems.js";
+import { getProducts, saveCart } from "./utils/storage.js";
 import createMenu from "./components/createMenu.js";
 
 createMenu();
@@ -11,12 +11,14 @@ const id = params.get("id");
 const finalId = parseInt(id);
 const url = productsUrl + finalId;
 const container = document.querySelector(".product-container");
+const title = document.querySelector("title");
 
 (async function callApi() {
   try {
     const response = await fetch(url);
     const json = await response.json();
-
+    /*Rename title of page when brand name has been decided*/
+    title.innerHTML = `Brand name | ${json.title}`;
     createProduct(json);
   } catch (error) {
     console.log(error);
@@ -35,7 +37,7 @@ function createProduct(product) {
 
   if (doesObjectExist) {
     cartText = "Remove from cart";
-    // addToCartBtnCss = "added-to-cart";
+    addToCartStyle = "btn-success";
   }
 
   container.innerHTML = `
@@ -85,8 +87,5 @@ function createProduct(product) {
     }
 
     createProduct(product);
-  }
-  function saveCart(prods) {
-    localStorage.setItem("products", JSON.stringify(prods));
   }
 }

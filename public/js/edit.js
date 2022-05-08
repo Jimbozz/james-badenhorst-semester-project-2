@@ -15,11 +15,11 @@ if (!id) {
 }
 
 const itemUrl = productsUrl + id;
-
 const form = document.querySelector("form");
 const message = document.querySelector(".message-container");
 const loading = document.querySelector(".loading");
 const title = document.querySelector("#title");
+const pageTitle = document.querySelector("title");
 const formHeading = document.querySelector("form h1");
 const price = document.querySelector("#price");
 const description = document.querySelector("#description");
@@ -32,8 +32,7 @@ const imageFile = document.querySelector("#imgfile");
   try {
     const response = await fetch(itemUrl);
     const json = await response.json();
-
-    console.log(json);
+    pageTitle.innerHTML = `Brand name | Edit product: ${json.title}`;
     formHeading.innerHTML = `Edit: ${json.title}`;
     title.value = json.title;
     price.value = json.price;
@@ -45,6 +44,9 @@ const imageFile = document.querySelector("#imgfile");
     deleteProduct(json.id);
   } catch (error) {
     console.log(error);
+    displayMessage("error", "whoops", ".message-container");
+
+    // form.style.display = "none";
   } finally {
     loading.style.display = "none";
   }
@@ -86,7 +88,7 @@ function formSubmit(event) {
     descriptionError.style.display = "none";
   }
 
-  // Description error
+  // Image file error
   const imageError = document.querySelector("#descriptionError");
   if (imageFile.length > 0) {
     imageError.style.display = "block";
@@ -135,26 +137,26 @@ async function updateProduct(
   imageValue,
   id
 ) {
-  console.log(imageValue.name);
-  const data = JSON.stringify({
+  // console.log(imageFile.name);
+  const data = {
     title: title,
     price: price,
     description: description,
     featured: featuredCheck,
-  });
+  };
 
+  // const file = imageFile.files[0];
   const formData = new FormData();
-  formData.append("file", imageFile.files[0], imageValue.name);
-  formData.append("data", data);
-  // console.log(imageValue);
+  formData.append(`files.image`, imageValue, imageValue.name);
+  formData.append("data", JSON.stringify(data));
+  console.log(imageValue);
   const token = getToken();
-  // data = formData;
 
   const options = {
     method: "PUT",
-    body: data,
+    body: formData,
     headers: {
-      "Content-Type": "application/json",
+      // "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   };
@@ -168,14 +170,11 @@ async function updateProduct(
 
     if (json.updated_at) {
       displayMessage(
-        "success",
+        "alert-success",
         `You have successfully updated article: ${json.title}`,
         ".message-container"
       );
-      const image = document.querySelector(".img");
-      console.log(json.image);
-      image.style = `background: url('/public/${json.image.url}') center no-repeat; background-size: cover; width: 100%; height: 20rem;`;
-      console.log("this was updated");
+      console.log("success");
     }
     if (json.error) {
       displayMessage("error", json.message, ".message-container");

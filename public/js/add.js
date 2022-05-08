@@ -26,6 +26,38 @@ function formSubmit(event) {
   const imageValue = image.files[0];
   const featuredCheck = featured.checked;
 
+  // Product name error
+  const nameError = document.querySelector("#titleError");
+  if (titleValue.length < 1 || titleValue.length > 14) {
+    nameError.style.display = "block";
+  } else {
+    nameError.style.display = "none";
+  }
+
+  // Price error
+  const priceError = document.querySelector("#priceError");
+  if (priceValue <= 0 || isNaN(priceValue)) {
+    priceError.style.display = "block";
+  } else {
+    priceError.style.display = "none";
+  }
+
+  // Description error
+  const descriptionError = document.querySelector("#descriptionError");
+  if (descriptionValue.length < 10) {
+    descriptionError.style.display = "block";
+  } else {
+    descriptionError.style.display = "none";
+  }
+
+  // Image file error
+  const imageError = document.querySelector("#imageError");
+  if (image.files.length < 0) {
+    imageError.style.display = "block";
+  } else {
+    imageError.style.display = "none";
+  }
+
   if (
     titleValue.length > 1 &&
     priceValue.length > 2 &&
@@ -59,7 +91,7 @@ async function addProduct(
   const formData = new FormData();
   formData.append("files.image", imageValue, imageValue.name);
   formData.append("data", JSON.stringify(data));
-  console.log(imageValue);
+
   // if (image.type === "file") {
   //   const file = image.files[0];
   //   console.log(file);
@@ -71,6 +103,7 @@ async function addProduct(
     method: "POST",
     body: formData,
     headers: {
+      // "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   };

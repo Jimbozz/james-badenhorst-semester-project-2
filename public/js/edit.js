@@ -20,6 +20,7 @@ const form = document.querySelector("form");
 const message = document.querySelector(".message-container");
 const loading = document.querySelector(".loading");
 const title = document.querySelector("#title");
+const formHeading = document.querySelector("form h1");
 const price = document.querySelector("#price");
 const description = document.querySelector("#description");
 const idInput = document.querySelector("#id");
@@ -33,7 +34,7 @@ const imageFile = document.querySelector("#imgfile");
     const json = await response.json();
 
     console.log(json);
-
+    formHeading.innerHTML = `Edit: ${json.title}`;
     title.value = json.title;
     price.value = json.price;
     description.value = json.description;
@@ -41,7 +42,7 @@ const imageFile = document.querySelector("#imgfile");
     image.style = `background: url('/public/${json.image.url}') center no-repeat; background-size: cover; width: 100%; height: 20rem;`;
     featured.checked = json.featured;
 
-    // deleteArticle(json.id);
+    deleteProduct(json.id);
   } catch (error) {
     console.log(error);
   } finally {
@@ -131,9 +132,10 @@ async function updateProduct(
   price,
   description,
   featuredCheck,
-  image,
+  imageValue,
   id
 ) {
+  console.log(imageValue.name);
   const data = JSON.stringify({
     title: title,
     price: price,
@@ -142,7 +144,7 @@ async function updateProduct(
   });
 
   const formData = new FormData();
-  formData.append("file", imageFile.files[0]);
+  formData.append("file", imageFile.files[0], imageValue.name);
   formData.append("data", data);
   // console.log(imageValue);
   const token = getToken();
@@ -170,6 +172,9 @@ async function updateProduct(
         `You have successfully updated article: ${json.title}`,
         ".message-container"
       );
+      const image = document.querySelector(".img");
+      console.log(json.image);
+      image.style = `background: url('/public/${json.image.url}') center no-repeat; background-size: cover; width: 100%; height: 20rem;`;
       console.log("this was updated");
     }
     if (json.error) {

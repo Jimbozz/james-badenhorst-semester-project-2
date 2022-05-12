@@ -16,18 +16,18 @@
       <div class="wrapper">
         <div class="nav-container"></div>
         <div class="container my-5 text-center">
-          <form>
+          <form id="add" method="post" enctype="multipart/form-data">
             <h1>Add a product</h1>
             <div class="message-container"></div>
             <div class="mb-3">
-              <label for="name" class="form-label">Product name</label>
+              <label for="title" class="form-label">Product name</label>
               <input
                 class="form-control"
                 id="title"
-                aria-describedby="title"
+                name="title"
                 type="text"
-                for="name"
                 placeholder="Product name"
+                required
               />
               <div id="titleError" class="form-text error error-name">
                 Product names should be 1-14 characters.
@@ -39,7 +39,7 @@
                 type="number"
                 class="form-control"
                 id="price"
-                for="price"
+                name="price"
                 placeholder="$100"
               />
               <div id="priceError" class="form-text error error-price">
@@ -72,8 +72,8 @@
               <input
                 class="form-control"
                 type="file"
-                name="cover"
-                id="img"
+                name="files.image"
+                id="image"
                 accept="image/png, image/jpeg"
               />
               <div id="imageError" class="form-text error error-image">
@@ -87,7 +87,9 @@
               >
             </div>
 
-            <button type="submit" class="btn btn-primary">Add product</button>
+            <button type="submit" class="btn btn-primary">
+              Create product
+            </button>
           </form>
         </div>
       </div>

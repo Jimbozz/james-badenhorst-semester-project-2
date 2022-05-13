@@ -115,58 +115,9 @@ async function addProduct(
 
     if (response.ok) {
       window.location = "/public/cart.html";
-      console.log("for real");
+      console.log("Something good happened");
     }
   } catch (error) {
     console.log("something bad happened");
   }
 }
-
-//new function
-
-// async function addProduct(event) {
-//   event.preventDefault();
-//   const url = productsUrl;
-//   const form = event.target;
-//   const action = form.action;
-//   const method = form.method;
-//   const enctype = form.method;
-//   const originalFormData = new FormData(form);
-//   const body = new FormData();
-
-//   for (const [key, value] of originalFormData.entries()) {
-//     if (key.includes("files.")) {
-//       body.append(key, value);
-//       // Add this to the request body
-//       originalFormData.delete(key);
-//       // Remove it from the original form data list
-//     }
-//   }
-
-//   const data = Object.fromEntries(originalFormData.entries());
-//   const token = getToken();
-//   const headers = new Headers({
-//     // "Content-Type": "application/json",
-//     Authorization: `Bearer ${token}`,
-//   });
-
-//   body.append("data", JSON.stringify(data));
-
-//   try {
-//     const response = await fetch(url, { body, method, enctype, headers });
-//     console.log(response);
-//     const json = await response.json();
-//     console.log(json);
-
-//     // if (response.ok) {
-//     //   window.location = "/public/cart.html";
-//     //   console.log("created");
-//     // }
-//     if (response.ok) {
-//       window.location = "/public/cart.html";
-//       console.log("for real");
-//     }
-//   } catch (error) {
-//     console.log("something bad happened");
-//   }
-// }

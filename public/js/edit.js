@@ -1,8 +1,10 @@
 import createMenu from "./components/createMenu.js";
-import { productsUrl } from "./settings/api.js";
+import { productsUrl, baseUrl } from "./settings/api.js";
 import displayMessage from "./components/displayMessage.js";
 import { getToken } from "./utils/storage.js";
 import deleteProduct from "./components/deleteProduct.js";
+// import { getUploads } from "./uploads.js";
+import { mediaUrl } from "./settings/api.js";
 
 createMenu();
 
@@ -39,7 +41,9 @@ const imageFile = document.querySelector("#imgfile");
     description.value = json.description;
     idInput.value = json.id;
     image.style = `background: url('/public/${json.image.url}') center no-repeat; background-size: cover; width: 100%; height: 20rem;`;
+    image.setAttribute("id", json.image.id);
     featured.checked = json.featured;
+    console.log(json);
 
     deleteProduct(json.id);
   } catch (error) {
@@ -182,4 +186,65 @@ async function updateProduct(
   } catch (error) {
     console.log(error);
   }
+}
+
+//Trying
+
+const token = getToken();
+
+const headers = {
+  // "Content-Type": "application/json",
+  Authorization: `Bearer ${token}`,
+};
+
+(async function getUploads() {
+  try {
+    const response = await fetch(mediaUrl, {
+      headers,
+    });
+    const result = await response.json();
+    let fileId = result[0].id;
+    console.log(fileId);
+    renderFiles(result);
+
+    // return result;
+  } catch (error) {
+    console.log("there was amn error");
+  }
+})();
+
+const container = document.querySelector("#uploadList");
+
+function renderFiles(imageFiles) {
+  console.log(fileId);
+  // if (fileId) {
+  //   const input = document.querySelector(".form-check-input");
+  //   input.setAttribute("checked", "");
+  // }
+  imageFiles.forEach(function (files) {
+    container.innerHTML += `
+    <div class="row">
+                  <div class="list-group-item list-group-item-action col">
+                    <label class="form-check" for="">
+                      <input
+                        class="form-check-input"
+                        name="image"
+                        type="radio"
+                        value=""
+                        id="${files.id}"
+                      />
+                      <span class="form-check-label">
+                        
+                        <img
+                          src="${baseUrl}${files.url}"
+                          alt=""
+                          class="img-fluid"
+                          
+                        />
+                      </span>
+                    </label>
+                  </div>
+      </div>
+                `;
+  });
 }

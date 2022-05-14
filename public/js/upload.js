@@ -1,6 +1,6 @@
 import createMenu from "./components/createMenu.js";
-import {uploadUrl} from "./settings/api.js";
-import {getToken} from "./utils/storage.js";
+import { uploadUrl } from "./settings/api.js";
+import { getToken } from "./utils/storage.js";
 
 createMenu();
 
@@ -8,9 +8,7 @@ const formElement = document.querySelector("form");
 const token = getToken();
 const url = uploadUrl;
 
-
 formElement.addEventListener("submit", onUpload);
-
 
 async function onUpload(event) {
   event.preventDefault();
@@ -19,16 +17,11 @@ async function onUpload(event) {
   const body = new FormData(form);
   const method = form.method;
   const enctype = form.enctype;
-  
+
   const headers = {
     // "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
   };
-
-
-  
-
-
 
   try {
     // const response = await fetch(url, options);
@@ -37,13 +30,10 @@ async function onUpload(event) {
     console.log(headers);
 
     if (response.ok) {
-    console.log("THis went well");
-    window.location = "/public/index.html";
+      console.log("THis went well");
+      window.location = "/public/index.html";
     }
-  } catch(error) {
+  } catch (error) {
     console.log("something went wrong");
   }
-  
 }
-
-

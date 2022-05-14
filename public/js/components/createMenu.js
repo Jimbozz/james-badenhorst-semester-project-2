@@ -22,6 +22,11 @@ export default function createMenu() {
               </li>
               <li class="nav-item">
                 <a class="nav-link ${
+                  pathname === "/public/upload.html" ? "active" : ""
+                }" href="/public/upload.html">Upload Media</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ${
                   pathname === "/public/edit.html" ? "active" : ""
                 }" href="/public/edit.html">Edit products</a>
               </li>

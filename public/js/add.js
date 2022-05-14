@@ -26,6 +26,7 @@ function formSubmit(event) {
   const imageValue = image.files[0];
   const featuredCheck = featured.checked;
 
+  console.log({ featuredCheck });
   // Product name error
   const nameError = document.querySelector("#titleError");
   if (titleValue.length < 1 || titleValue.length > 14) {
@@ -59,13 +60,22 @@ function formSubmit(event) {
   }
 
   if (
-    titleValue.length > 1 &&
-    priceValue.length > 2 &&
-    descriptionValue.length > 5 &&
-    imageValue &&
-    featuredCheck
+    titleValue.length > 0 &&
+    titleValue.length < 15 &&
+    descriptionValue.length > 10 &&
+    priceValue.length > 0 &&
+    !isNaN(priceValue) &&
+    priceValue != 0 &&
+    imageValue
+    
   ) {
-    addProduct(titleValue, priceValue, descriptionValue, imageValue);
+    addProduct(
+      titleValue,
+      priceValue,
+      descriptionValue,
+      featuredCheck,
+      imageValue
+    );
   }
 }
 
@@ -76,18 +86,22 @@ async function addProduct(
   featuredCheck,
   imageValue
 ) {
-  // const data = {
-  //   title: titleValue,
-  //   price: priceValue,
-  //   description: descriptionValue,
-  //   featured: featuredCheck,
-  // };
 
   const url = productsUrl;
   const method = form.method;
-  const enctype = form.method;
+  const enctype = form.enctype;
   const originalFormData = new FormData(form);
+  const featuredValue = originalFormData.get('featured');
+
+  if(featuredValue === 'on') {
+    originalFormData.set('featured', true);
+  } else {
+    originalFormData.set('featured', false);
+  }
+
   const body = new FormData();
+  
+  console.log("====> ", originalFormData.get("featured"));
 
   for (const [key, value] of originalFormData.entries()) {
     if (key.includes("files.")) {
@@ -99,6 +113,7 @@ async function addProduct(
   }
 
   const data = Object.fromEntries(originalFormData.entries());
+  console.log(data);
   const token = getToken();
   const headers = new Headers({
     // "Content-Type": "application/json",
@@ -106,6 +121,7 @@ async function addProduct(
   });
 
   body.append("data", JSON.stringify(data));
+ 
 
   try {
     const response = await fetch(url, { body, method, enctype, headers });
@@ -114,7 +130,7 @@ async function addProduct(
     // console.log(json);
 
     if (response.ok) {
-      window.location = "/public/cart.html";
+      window.location = "/public/products.html";
       console.log("Something good happened");
     }
   } catch (error) {

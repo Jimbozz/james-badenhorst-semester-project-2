@@ -18,7 +18,7 @@ export default function deleteProduct(id) {
   }
 
   button.onclick = async function () {
-    const form = document.querySelector("form");
+    
     const deleteCheck = confirm(
       "Are you sure you want to delete this product?"
     );

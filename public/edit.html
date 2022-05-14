@@ -17,7 +17,7 @@
         <div class="nav-container"></div>
         <div class="container my-5 text-center">
           <div class="loading">Loading Edit form...</div>
-          <form>
+          <form id="edit" method="put" enctype="multipart/form-data">
             <h1>Add a product</h1>
             <div class="message-container"></div>
             <div class="mb-3">
@@ -68,18 +68,41 @@
             <div class="mb-3">
               <div class="img"></div>
             </div>
-            <div class="mb-3 d-flex">
+            <div class="mb-3">
               <label for="img" class="form-label"
                 >To update/change the product image click here. Choose only
                 (PNG, JPG) files.</label
               >
-              <input
+              <!-- <input
                 id="imgfile"
                 type="file"
                 name="cover"
                 accept="image/png, image/jpeg"
-              />
+              /> -->
               <div id="imageError" class="form-text error error-image"></div>
+              <div class="list-group mb-3" id="uploadList">
+              <div class="list-group-item">Loading...</div>
+              <template>
+                <div class="list-group-item list-group-item-action">
+                  <label class="form-check" for="">
+                    <input
+                      class="form-check-input"
+                      name="image"
+                      type="radio"
+                      value=""
+                      id=""
+                    />
+                    <span class="form-check-label">
+                      <img
+                        src="http://localhost:1337/uploads/thumbnail_test_3b315c0634.png?width=960&height=600"
+                        alt=""
+                        class="img-fluid"
+                      />
+                    </span>
+                  </label>
+                </div>
+              </template>
+            </div>
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="featured" />

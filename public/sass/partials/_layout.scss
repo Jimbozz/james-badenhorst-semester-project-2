@@ -11,11 +11,19 @@ body {
   flex-direction: column;
 }
 
-footer {
+.footer {
   display: flex;
+  flex-direction: column;
   flex-shrink: 0;
   color: white;
   background-color: $dark;
+  padding: 2rem 5rem;
+  justify-content: space-between;
+
+  &__links {
+    display: flex;
+    gap: 2rem;
+  }
 }
 
 .wrapper {

@@ -81,7 +81,7 @@ export default function createMenu() {
     container.innerHTML = `
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/public/index.html"><img src="/public/assets/soles-3-01.svg" alt="" style="width: 5rem;"></a>
+          <a class="navbar-brand" href="/public/index.html"><img src="/public/assets/soles-3-01.svg" alt="Soles logo" style="width: 5rem;"></a>
           <button
             class="navbar-toggler"
             type="button"
@@ -127,7 +127,7 @@ export default function createMenu() {
                   <a class="nav-link" href="/public/login.html" id="logout" href="/public/login.html" role="button">Logout: ${username}</a>
                 </li>
                 <li class="nav-item">
-                  <a href="/public/cart.html">
+                  <a href="/public/cart.html" aria-label="cart icon">
                     <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
                   </a>
                 </li>
@@ -173,7 +173,7 @@ export default function createMenu() {
                 }" href="/public/login.html" id="login" href="/public/login.html" role="button">Login</a>
               </li>
               <li class="nav-item">
-                <a href="/public/cart.html">
+                <a href="/public/cart.html" aria-label="cart icon">
                   <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
                 </a>
               </li>

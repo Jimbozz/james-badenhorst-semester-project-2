@@ -10752,7 +10752,7 @@ textarea.form-control-lg {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.7);
 }
 
 .card-img-top {
@@ -10769,11 +10769,18 @@ body {
   flex-direction: column;
 }
 
-footer {
+.footer {
   display: flex;
+  flex-direction: column;
   flex-shrink: 0;
   color: white;
   background-color: #262525;
+  padding: 2rem 5rem;
+  justify-content: space-between;
+}
+.footer__links {
+  display: flex;
+  gap: 2rem;
 }
 
 .wrapper {

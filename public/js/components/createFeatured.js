@@ -15,7 +15,7 @@ export function createFeatured(renderFeatured) {
           <h5 class="card-title">${featured.title}</h5>
           <p class="card-text">$ ${featured.price}</p>
         </div>
-        <a href="/public/product-specific.html?id=${featured.id}" class="stretched-link"></a>
+        <a href="/public/product-specific.html?id=${featured.id}" aria-label="${featured.title}" class="stretched-link"></a>
       </div>
   </div>
 `;

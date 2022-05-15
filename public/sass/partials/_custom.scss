@@ -11,3 +11,14 @@ $aspect-ratios: (
   "16x9": calc(9 / 16 * 100%),
   "21x9": calc(9 / 21 * 100%),
 );
+
+$utilities: (
+  "viewport-height": (
+    property: height,
+    class: vh,
+    values: (
+      100: 100vh,
+      80: 80vh,
+    ),
+  ),
+);

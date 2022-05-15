@@ -122,8 +122,7 @@ export default function createMenu() {
               </li>
             </ul>
             <div class="d-flex gap-2 flex-column flex-lg-row">
-              
-              <ul class="navbar-nav align-items-center">
+              <ul class="navbar-nav align-items-lg-center">
                 <li class="nav-item">
                   <a class="nav-link" href="/public/login.html" id="logout" href="/public/login.html" role="button">Logout: ${username}</a>
                 </li>
@@ -167,7 +166,7 @@ export default function createMenu() {
                 }" href="/public/products.html">Products</a>
               </li>
             </ul>
-            <ul class="navbar-nav align-items-center">
+            <ul class="navbar-nav align-items-lg-center">
               <li class="nav-item">
                 <a class="nav-link ${
                   pathname === "/public/login.html" ? "active" : ""
@@ -179,7 +178,6 @@ export default function createMenu() {
                 </a>
               </li>
             </ul>
-           
           </div>
         </div>
       </nav>`;

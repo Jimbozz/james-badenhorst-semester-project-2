@@ -10748,6 +10748,13 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.bg-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+}
+
 .card-img-top {
   object-fit: cover;
 }

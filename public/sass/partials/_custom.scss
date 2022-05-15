@@ -3,3 +3,11 @@ $dark: #262525;
 $background-colour: #393939;
 $primary-colour-hover: #f54b8d;
 $background-dark: rgba(0, 0, 0, 0.5);
+
+$aspect-ratios: (
+  "1x1": 100%,
+  "4x5": calc(5 / 4 * 100%),
+  "4x3": calc(3 / 4 * 100%),
+  "16x9": calc(9 / 16 * 100%),
+  "21x9": calc(9 / 21 * 100%),
+);

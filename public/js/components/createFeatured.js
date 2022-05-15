@@ -7,11 +7,11 @@ export function createFeatured(renderFeatured) {
   renderFeatured.forEach(function (featured) {
     container.innerHTML += `
   <div class="col">
-      <div class="card h-100 border-0 shadow bg-body">
-        <div class="ratio ratio-1x1">
-          <img src="${baseUrl}${featured.image.url}" class="card-img-top img-fluid" alt="${featured.image.alternativeText}">
+      <div class="card h-100 border-0 bg-body">
+        <div class="ratio ratio-4x5">
+          <img src="${baseUrl}${featured.image.url}" class="card-img-top img-fluid rounded-0" alt="${featured.image.alternativeText}">
         </div>
-        <div class="card-body">
+        <div class="card-body p-0 mt-3">
           <h5 class="card-title">${featured.title}</h5>
           <p class="card-text">$ ${featured.price}</p>
         </div>

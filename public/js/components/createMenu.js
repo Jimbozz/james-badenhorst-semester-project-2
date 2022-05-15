@@ -122,12 +122,17 @@ export default function createMenu() {
               </li>
             </ul>
             <div class="d-flex gap-2 flex-column flex-lg-row">
-              <button type="button" class="btn btn-sm btn-outline-secondary px-4 gap-3" id="logout">
-                Logout: ${username}
-              </button>
-              <a href="/public/cart.html">
-                <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
-              </a>
+              
+              <ul class="navbar-nav align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/public/login.html" id="logout" href="/public/login.html" role="button">Logout: ${username}</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/public/cart.html">
+                    <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -162,16 +167,19 @@ export default function createMenu() {
                 }" href="/public/products.html">Products</a>
               </li>
             </ul>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav align-items-center">
               <li class="nav-item">
                 <a class="nav-link ${
                   pathname === "/public/login.html" ? "active" : ""
                 }" href="/public/login.html" id="login" href="/public/login.html" role="button">Login</a>
               </li>
+              <li class="nav-item">
+                <a href="/public/cart.html">
+                  <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
+                </a>
+              </li>
             </ul>
-            <a href="/public/cart.html">
-              <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
-            </a>
+           
           </div>
         </div>
       </nav>`;

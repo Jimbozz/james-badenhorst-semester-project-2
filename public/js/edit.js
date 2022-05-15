@@ -216,14 +216,14 @@ const headers = {
 const container = document.querySelector("#uploadList");
 
 function renderFiles(imageFiles) {
-  console.log(fileId);
+  // console.log(fileId);
   // if (fileId) {
   //   const input = document.querySelector(".form-check-input");
   //   input.setAttribute("checked", "");
   // }
   imageFiles.forEach(function (files) {
     container.innerHTML += `
-    <div class="row">
+   
                   <div class="list-group-item list-group-item-action col">
                     <label class="form-check" for="">
                       <input
@@ -244,7 +244,7 @@ function renderFiles(imageFiles) {
                       </span>
                     </label>
                   </div>
-      </div>
+      
                 `;
   });
 }

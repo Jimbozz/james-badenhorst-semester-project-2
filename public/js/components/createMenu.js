@@ -7,38 +7,38 @@ export default function createMenu() {
   const username = getUserName();
 
   let authlink = `
-              <li class="nav-item">
-                <a class="nav-link ${
-                  pathname === "/public/login.html" ? "active" : ""
-                }" href="/public/login.html">Sign in</a>
-              </li>
+              
+       
+        <a class="btn btn-primary btn-sm" id="login" href="/public/login.html" role="button">Login</a>
               `;
   if (username) {
     authlink = `
-              <li class="nav-item">
-                <a class="nav-link ${
-                  pathname === "/public/add.html" ? "active" : ""
-                }" href="/public/add.html">Add product</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link ${
-                  pathname === "/public/upload.html" ? "active" : ""
-                }" href="/public/upload.html">Upload Media</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link ${
-                  pathname === "/public/edit.html" ? "active" : ""
-                }" href="/public/edit.html">Edit products</a>
-              </li>
-              <button type="button" class="btn btn-sm btn-outline-secondary px-4 gap-3" id="logout">
-                Logout: ${username}
-              </button>
-              `;
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item ${
+              pathname === "/public/add.html" ? "active" : ""
+            }" href="/public/add.html">Add product</a></li>
+            <li><a class="dropdown-item ${
+              pathname === "/public/upload.html" ? "active" : ""
+            }" href="/public/upload.html">Upload media</a></li>
+            <li><a class="dropdown-item ${
+              pathname === "/public/edit.html" ? "active" : ""
+            }" href="/public/edit.html">Edit products</a></li>
+          </ul>
+        </li>
+        <button type="button" class="btn btn-sm btn-outline-secondary px-4 gap-3" id="logout">
+          Logout: ${username}
+        </button>
+`;
   }
 
-  container.innerHTML = `<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  container.innerHTML = `
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Logo</a>
+          <a class="navbar-brand" href="/public/index.html"><img src="/public/assets/soles-3-01.svg" alt="" style="width: 5rem;"></a>
           <button
             class="navbar-toggler"
             type="button"
@@ -46,8 +46,7 @@ export default function createMenu() {
             data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -63,12 +62,10 @@ export default function createMenu() {
                 }" href="/public/products.html">Products</a>
               </li>
               ${authlink}
-              <li>
-                <a href="/public/cart.html">
-                  <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
-                </a>
-              </li>
             </ul>
+            <a href="/public/cart.html">
+              <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
+            </a>
           </div>
         </div>
       </nav>`;

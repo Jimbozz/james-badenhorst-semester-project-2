@@ -16,88 +16,99 @@
       <div class="wrapper">
         <div class="nav-container"></div>
         <div class="container my-5 text-center">
-          <div class="loading">Loading Edit form...</div>
-          <form id="edit" method="put" enctype="multipart/form-data">
-            <h1>Add a product</h1>
-            <div class="message-container"></div>
-            <div class="mb-3">
-              <label for="title" class="form-label">Product name</label>
-              <input
-                class="form-control"
-                id="title"
-                name="title"
-                placeholder="Product name"
-              />
-              <div id="titleError" class="form-text error error-name">
-                Product names should be 1-14 characters.
-              </div>
+          <div class="row justify-content-center my-5">
+            <div class="col-12 col-md-6 col-lg-5">
+              <div class="loading">Loading Edit form...</div>
+              <form id="edit" method="put" enctype="multipart/form-data">
+                <h1>Add a product</h1>
+                <div class="message-container"></div>
+                <div class="mb-3">
+                  <label for="title" class="form-label">Product name</label>
+                  <input
+                    class="form-control"
+                    id="title"
+                    name="title"
+                    placeholder="Product name"
+                  />
+                  <div id="titleError" class="form-text error error-name">
+                    Product names should be 1-14 characters.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="price" class="form-label">Product price</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="price"
+                    step=".01"
+                    name="price"
+                    placeholder="$100"
+                  />
+                  <div id="priceError" class="form-text error error-price">
+                    Price should be larger than $0
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label"
+                    >Product description</label
+                  >
+                  <textarea
+                    name="description"
+                    class="form-control"
+                    id="description"
+                    rows="5"
+                    cols="33"
+                    placeholder="Product description"
+                  ></textarea>
+                  <div
+                    id="descriptionError"
+                    class="form-text error error-description"
+                  >
+                    Your description should be longer than 10 characters.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="img"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="img" class="form-label"
+                    >To update/change the product image click here. Choose only
+                    (PNG, JPG) files.</label
+                  >
+                  <!-- <input
+                    id="imgfile"
+                    type="file"
+                    name="cover"
+                    accept="image/png, image/jpeg"
+                  /> -->
+                  <div
+                    id="imageError"
+                    class="form-text error error-image"
+                  ></div>
+                  <div class="list-group mb-3" id="uploadList">
+                    <div class="list-group-item">Loading...</div>
+                  </div>
+                </div>
+                <div class="mb-3 form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="featured"
+                  />
+                  <label class="form-check-label" for="featured"
+                    >Featured product</label
+                  >
+                </div>
+                <input id="id" hidden />
+                <div class="mb-3 d-flex">
+                  <button id="update" class="btn btn-primary">
+                    Update product
+                  </button>
+                  <div class="delete-container"></div>
+                </div>
+              </form>
             </div>
-            <div class="mb-3">
-              <label for="price" class="form-label">Product price</label>
-              <input
-                type="number"
-                class="form-control"
-                id="price"
-                step=".01"
-                name="price"
-                placeholder="$100"
-              />
-              <div id="priceError" class="form-text error error-price">
-                Price should be larger than $0
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="description" class="form-label"
-                >Product description</label
-              >
-              <textarea
-                name="description"
-                class="form-control"
-                id="description"
-                rows="5"
-                cols="33"
-                placeholder="Product description"
-              ></textarea>
-              <div
-                id="descriptionError"
-                class="form-text error error-description"
-              >
-                Your description should be longer than 10 characters.
-              </div>
-            </div>
-            <div class="mb-3">
-              <div class="img"></div>
-            </div>
-            <div class="mb-3">
-              <label for="img" class="form-label"
-                >To update/change the product image click here. Choose only
-                (PNG, JPG) files.</label
-              >
-              <!-- <input
-                id="imgfile"
-                type="file"
-                name="cover"
-                accept="image/png, image/jpeg"
-              /> -->
-              <div id="imageError" class="form-text error error-image"></div>
-              <div class="list-group mb-3 container" id="uploadList">
-                <div class="list-group-item">Loading...</div>
-              </div>
-            </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="featured" />
-              <label class="form-check-label" for="featured"
-                >Featured product</label
-              >
-            </div>
-            <input id="id" hidden />
-            <div class="mb-3 d-flex">
-              <button id="update" class="btn btn-primary">
-                Update product
-              </button>
-              <div class="delete-container"></div>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </main>

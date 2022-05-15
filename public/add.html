@@ -16,86 +16,90 @@
       <div class="wrapper">
         <div class="nav-container"></div>
         <div class="container my-5 text-center">
-          <form id="add" method="post" enctype="multipart/form-data">
-            <h1>Add a product</h1>
-            <div class="message-container"></div>
-            <div class="mb-3">
-              <label for="title" class="form-label">Product name</label>
-              <input
-                class="form-control"
-                id="title"
-                name="title"
-                type="text"
-                placeholder="Product name"
-                required
-              />
-              <div id="titleError" class="form-text error error-name">
-                Product names should be 1-14 characters.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="price" class="form-label">Product price</label>
-              <input
-                type="number"
-                class="form-control"
-                id="price"
-                name="price"
-                placeholder="$100"
-              />
-              <div id="priceError" class="form-text error error-price">
-                Price should be larger than $0
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="description" class="form-label"
-                >Product description</label
-              >
-              <textarea
-                name="description"
-                class="form-control"
-                id="description"
-                rows="5"
-                cols="33"
-                placeholder="Product description"
-              ></textarea>
-              <div
-                id="descriptionError"
-                class="form-text error error-description"
-              >
-                Your description should be longer than 10 characters.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="img" class="form-label"
-                >Choose images to upload (PNG, JPG)</label
-              >
-              <input
-                class="form-control"
-                type="file"
-                name="files.image"
-                id="image"
-                accept="image/png, image/jpeg"
-              />
-              <div id="imageError" class="form-text error error-image">
-                Your file should be smaller than 200MB.
-              </div>
-            </div>
-            <div class="mb-3 form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="featured"
-                name="featured"
-              />
-              <label class="form-check-label" for="featured"
-                >Featured product</label
-              >
-            </div>
+          <div class="row justify-content-center my-5">
+            <div class="col-12 col-md-6 col-lg-5">
+              <form id="add" method="post" enctype="multipart/form-data">
+                <h1>Add a product</h1>
+                <div class="message-container"></div>
+                <div class="mb-3">
+                  <label for="title" class="form-label">Product name</label>
+                  <input
+                    class="form-control"
+                    id="title"
+                    name="title"
+                    type="text"
+                    placeholder="Product name"
+                    required
+                  />
+                  <div id="titleError" class="form-text error error-name">
+                    Product names should be 1-14 characters.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="price" class="form-label">Product price</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="price"
+                    name="price"
+                    placeholder="$100"
+                  />
+                  <div id="priceError" class="form-text error error-price">
+                    Price should be larger than $0
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label"
+                    >Product description</label
+                  >
+                  <textarea
+                    name="description"
+                    class="form-control"
+                    id="description"
+                    rows="5"
+                    cols="33"
+                    placeholder="Product description"
+                  ></textarea>
+                  <div
+                    id="descriptionError"
+                    class="form-text error error-description"
+                  >
+                    Your description should be longer than 10 characters.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="img" class="form-label"
+                    >Choose images to upload (PNG, JPG)</label
+                  >
+                  <input
+                    class="form-control"
+                    type="file"
+                    name="files.image"
+                    id="image"
+                    accept="image/png, image/jpeg"
+                  />
+                  <div id="imageError" class="form-text error error-image">
+                    Your file should be smaller than 200MB.
+                  </div>
+                </div>
+                <div class="mb-3 form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="featured"
+                    name="featured"
+                  />
+                  <label class="form-check-label" for="featured"
+                    >Featured product</label
+                  >
+                </div>
 
-            <button type="submit" class="btn btn-primary">
-              Create product
-            </button>
-          </form>
+                <button type="submit" class="btn btn-primary">
+                  Create product
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </main>

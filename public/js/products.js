@@ -19,7 +19,7 @@ export function createProducts(renderProducts) {
       // const button = document.querySelectorAll(".delete-btn");
 
       container.innerHTML += `<div class="col">
-        <div class="card h-100 border-0 shadow bg-body">
+        <div class="card h-100 border-0 shadow bg-body position-relative">
           <div class="ratio ratio-1x1">
             <img src="${baseUrl}${product.image.url}" class="card-img-top img-fluid" alt="${product.image.alternativeText}">
           </div>
@@ -27,7 +27,7 @@ export function createProducts(renderProducts) {
             <h5 class="card-title">${product.title}</h5>
             <p class="card-text">$ ${product.price}</p>
             <a href="/public/product-specific.html?id=${product.id}" class="card-link">View product</a>
-            <a href="/public/edit.html?id=${product.id}" class="card-link btn btn-info"><i class="bi bi-pencil-square"></i>
+            <a href="/public/edit.html?id=${product.id}" class="card-link btn btn-info" style="position: absolute;top: 10px;right: 10px;"><i class="bi bi-pencil-square"></i>
             </a>
           </div>
         </div>

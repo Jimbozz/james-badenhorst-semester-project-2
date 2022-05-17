@@ -1,4 +1,4 @@
-import { getUserName } from "../utils/storage.js";
+import { getUserName, getProducts } from "../utils/storage.js";
 import logoutButton from "./logoutButton.js";
 
 // export default function createMenu() {
@@ -76,6 +76,7 @@ export default function createMenu() {
   const container = document.querySelector(".nav-container");
   const { pathname } = document.location;
   const username = getUserName();
+  const products = getProducts();
 
   if (username) {
     container.innerHTML = `
@@ -127,8 +128,9 @@ export default function createMenu() {
                   <a class="nav-link" href="/public/login.html" id="logout" href="/public/login.html" role="button">Logout: ${username}</a>
                 </li>
                 <li class="nav-item">
-                  <a href="/public/cart.html" aria-label="cart icon">
+                  <a class="cart-icon" href="/public/cart.html" aria-label="cart icon">
                     <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
+                    <div class="cart-icon__number">${products.length}</div>
                   </a>
                 </li>
               </ul>
@@ -175,6 +177,7 @@ export default function createMenu() {
               <li class="nav-item">
                 <a href="/public/cart.html" aria-label="cart icon">
                   <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
+
                 </a>
               </li>
             </ul>

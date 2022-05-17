@@ -7,7 +7,6 @@ import createMenu from "./components/createMenu.js";
 const products = getProducts();
 
 createMenu();
-
 const cartContainer = document.querySelector(".cart-items");
 // const cartTotal = document.querySelector(".cart__total");
 
@@ -38,7 +37,6 @@ for (let i = 0; i < products.length; i++) {
   let price = parseFloat(products[i].price);
 
   totalPrice += price;
-  console.log(products[i].price);
 }
 console.log(totalPrice);
 

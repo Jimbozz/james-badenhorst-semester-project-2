@@ -10759,6 +10759,10 @@ textarea.form-control-lg {
   object-fit: cover;
 }
 
+.cart-items__image {
+  max-width: 12rem;
+}
+
 html,
 body {
   height: 100%;

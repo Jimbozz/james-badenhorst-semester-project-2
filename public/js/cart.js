@@ -1,4 +1,4 @@
-import { getProducts } from "./utils/storage.js";
+import { getProducts, saveCart } from "./utils/storage.js";
 
 import { baseUrl } from "./settings/api.js";
 import displayMessage from "./components/displayMessage.js";
@@ -17,16 +17,33 @@ if (products.length === 0) {
 products.forEach((product) => {
   cartContainer.innerHTML += `
 
-  <li class="list-group-item d-flex justify-content-between align-items-start ">
+  <li class="list-group-item d-flex justify-content-between align-items-start cart-items__item">
     <div class="ms-2 me-auto">
-      <div class="fw-bold"><h5 class="card-title">${product.title}</h5></div>
-      <p class="card-text">$${product.price}</p>
+      <div class="fw-bold"><h5>${product.title}</h5></div>
+      <p>$${product.price}</p>
     </div>
     <img src="${baseUrl}${product.image.url}" class="cart-items__image img-fluid" alt="${product.image.alternativeText}">
+    <button type="button" class="btn btn-sm btn-danger cart-items__button" data-id="${product.id}">
+        <i class="bi bi-trash"></i>
+      </button>
     <a href="/public/product-specific.html?id=${product.id}" class="stretched-link"></a>
   </li>
   `;
 });
+
+/*Remove item from cart */
+
+const trashButton = document.querySelector(".cart-items__button");
+trashButton.addEventListener("click", handleClick);
+
+console.log(trashButton);
+
+function handleClick() {
+  console.log("hello");
+  // const id = this.dataset.id;
+  // const removeItem = products.filter((item) => item.id !== id);
+  // // saveCart(removeItem);
+}
 
 /* total price */
 const totalContainer = document.querySelector(".total-container");
@@ -41,23 +58,3 @@ for (let i = 0; i < products.length; i++) {
 console.log(totalPrice);
 
 totalContainer.innerHTML += totalPrice;
-
-{
-  /* <div class="col">
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="${baseUrl}${product.image.url}" class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">${product.title}</h5>
-          <p class="card-text">$${product.price}</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-        <a href="/public/product-specific.html?id=${product.id}" class="stretched-link"></a>
-      </div>
-    </div>
-  </div>
-</div> */
-}

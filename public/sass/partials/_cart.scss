@@ -1,4 +1,16 @@
 .cart-items {
+  &__item {
+    position: relative;
+  }
+
+  &__button {
+    position: absolute;
+    top: 17px;
+    right: 23px;
+    z-index: 3;
+    margin-left: 1rem;
+  }
+
   &__image {
     max-width: 12rem;
   }

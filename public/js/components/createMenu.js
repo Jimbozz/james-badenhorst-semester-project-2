@@ -131,7 +131,9 @@ export default function createMenu() {
                 <li class="nav-item">
                   <a class="cart-icon" href="/public/cart.html" aria-label="cart icon">
                     <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
-                    <div class="cart-icon__number">${products.length}</div>
+                    <div class="cart-icon__number badge rounded-pill bg-info text-dark">${
+                      products.length
+                    }</div>
                   </a>
                 </li>
               </ul>
@@ -179,7 +181,9 @@ export default function createMenu() {
               <li class="nav-item">
                   <a class="cart-icon" href="/public/cart.html" aria-label="cart icon">
                     <i class="bi bi-bag-fill" style="font-size: 2rem;"></i>
-                    <div class="cart-icon__number">${products.length}</div>
+                    <div class="cart-icon__number badge rounded-pill bg-info text-dark">${
+                      products.length
+                    }</div>
                   </a>
                 </li>
             </ul>

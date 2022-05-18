@@ -8,10 +8,16 @@ const products = getProducts();
 
 createMenu();
 const cartContainer = document.querySelector(".cart-items");
+const message = document.querySelector(".message-container");
 // const cartTotal = document.querySelector(".cart__total");
 
 if (products.length === 0) {
   cartContainer.innerHTML = "Your cart is empty.";
+  displayMessage(
+    "alert-warning",
+    `Your cart is currently empty.`,
+    ".message-container"
+  );
 }
 
 products.forEach((product) => {
@@ -52,9 +58,9 @@ let totalPrice = 0;
 
 for (let i = 0; i < products.length; i++) {
   let price = parseFloat(products[i].price);
-
   totalPrice += price;
 }
-console.log(totalPrice);
+const rounded = Math.round(totalPrice * 1000) / 1000;
+console.log(rounded);
 
-totalContainer.innerHTML += totalPrice;
+totalContainer.innerHTML += rounded;

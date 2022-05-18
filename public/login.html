@@ -12,41 +12,45 @@
     <title>Login</title>
   </head>
   <body>
-    <main>
-      <div class="wrapper">
-        <div class="nav-container"></div>
-        <div class="container">
-          <div class="row justify-content-center my-5">
-            <div class="col-12 col-md-6 col-lg-5">
-              <h1>Login</h1>
-              <form>
-                <div class="message-container"></div>
-                <div class="mb-3">
-                  <label for="username" class="form-label"
-                    >Username/Email address</label
-                  >
-                  <input
-                    class="form-control"
-                    id="username"
-                    aria-describedby="username"
-                  />
-                  <div id="username" class="form-text">
-                    We'll never share your email with anyone else.
-                  </div>
+    <main class="wrapper">
+      <div class="nav-container"></div>
+      <div class="container">
+        <div class="row justify-content-center my-5">
+          <div class="col-12 col-md-6 col-lg-5">
+            <h1>Login</h1>
+            <form>
+              <div class="message-container"></div>
+              <div class="mb-3">
+                <label for="username" class="form-label"
+                  >Username/Email address</label
+                >
+                <input
+                  class="form-control"
+                  id="username"
+                  aria-describedby="username"
+                />
+                <div id="username" class="form-text">
+                  We'll never share your email with anyone else.
                 </div>
-                <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="password" />
-                </div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" />
+              </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-            </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
           </div>
         </div>
       </div>
     </main>
-    <footer>This is a footer</footer>
+    <footer class="footer flex-lg-row">
+      <span> © 2022 James Badenhorst </span>
+      <div class="footer__links">
+        <a href="#">Terms and Conditions</a>
+        <a href="#">Our Story</a>
+      </div>
+    </footer>
     <script src="js/login.js" type="module"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

@@ -12,26 +12,28 @@
     <title>Cart</title>
   </head>
   <body>
-    <main>
-      <div class="wrapper">
-        <div class="nav-container"></div>
-        <div class="container">
-          <!-- <div class="row cart__items"></div> -->
-          <div class="row justify-content-center my-5">
-            <div class="col-12 col-lg-6">
-              <h1>Cart</h1>
-              <!-- <div class="col cart__items"></div> -->
-
-              <ol
-                class="list-group list-group-numbered cart-items list-group-flush"
-              ></ol>
-              <h2 class="total-container">Total: $</h2>
-            </div>
+    <main class="wrapper">
+      <div class="nav-container"></div>
+      <div class="container">
+        <div class="row justify-content-center my-5">
+          <div class="col-12 col-lg-6">
+            <h1>Cart</h1>
+            <div class="message-container"></div>
+            <ol
+              class="list-group list-group-numbered cart-items list-group-flush"
+            ></ol>
+            <h2 class="total-container">Total: $</h2>
           </div>
         </div>
       </div>
-      <footer>This is a footer</footer>
     </main>
+    <footer class="footer flex-lg-row">
+      <span> © 2022 James Badenhorst </span>
+      <div class="footer__links">
+        <a href="#">Terms and Conditions</a>
+        <a href="#">Our Story</a>
+      </div>
+    </footer>
     <script src="js/cart.js" type="module"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

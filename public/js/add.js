@@ -6,7 +6,7 @@ import { productsUrl } from "./settings/api.js";
 createMenu();
 
 const form = document.querySelector("form");
-const message = document.querySelector(".message-container");
+
 const title = document.querySelector("#title");
 const price = document.querySelector("#price");
 const description = document.querySelector("#description");
@@ -17,8 +17,6 @@ form.addEventListener("submit", formSubmit);
 
 function formSubmit(event) {
   event.preventDefault();
-
-  message.innerHTML = "";
 
   const titleValue = title.value.trim();
   const priceValue = price.value.trim();
@@ -67,7 +65,6 @@ function formSubmit(event) {
     !isNaN(priceValue) &&
     priceValue != 0 &&
     imageValue
-    
   ) {
     addProduct(
       titleValue,
@@ -86,21 +83,22 @@ async function addProduct(
   featuredCheck,
   imageValue
 ) {
-
+  const message = document.querySelector(".message-container");
+  // const corsEnabledOne = "https://noroffcors.herokuapp.com/" + productsUrl;
   const url = productsUrl;
   const method = form.method;
   const enctype = form.enctype;
   const originalFormData = new FormData(form);
-  const featuredValue = originalFormData.get('featured');
+  const featuredValue = originalFormData.get("featured");
 
-  if(featuredValue === 'on') {
-    originalFormData.set('featured', true);
+  if (featuredValue === "on") {
+    originalFormData.set("featured", true);
   } else {
-    originalFormData.set('featured', false);
+    originalFormData.set("featured", false);
   }
 
   const body = new FormData();
-  
+
   console.log("====> ", originalFormData.get("featured"));
 
   for (const [key, value] of originalFormData.entries()) {
@@ -121,19 +119,21 @@ async function addProduct(
   });
 
   body.append("data", JSON.stringify(data));
- 
 
   try {
     const response = await fetch(url, { body, method, enctype, headers });
     console.log(response);
-    // const json = await response.json();
-    // console.log(json);
 
     if (response.ok) {
       window.location = "/public/products.html";
       console.log("Something good happened");
     }
   } catch (error) {
-    console.log("something bad happened");
+    console.log(error);
+    displayMessage(
+      "alert-warning",
+      `Something happened, please reload the page and try again.`,
+      ".message-container"
+    );
   }
 }

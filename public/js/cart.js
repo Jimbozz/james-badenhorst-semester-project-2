@@ -52,7 +52,7 @@ function handleClick() {
 }
 
 /* total price */
-const totalContainer = document.querySelector(".total-container");
+const totalContainer = document.querySelector(".cart-total");
 
 let totalPrice = 0;
 

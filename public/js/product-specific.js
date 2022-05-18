@@ -18,7 +18,7 @@ const title = document.querySelector("title");
     const response = await fetch(url);
     const json = await response.json();
     /*Rename title of page when brand name has been decided*/
-    title.innerHTML = `Brand name | ${json.title}`;
+    title.innerHTML = `Soles | ${json.title}`;
     createProduct(json);
   } catch (error) {
     console.log(error);
@@ -27,7 +27,6 @@ const title = document.querySelector("title");
 
 function createProduct(product) {
   const addToCart = getProducts();
-  console.log(addToCart);
   let addToCartStyle = "";
   let cartText = "Add to cart";
 
@@ -37,7 +36,7 @@ function createProduct(product) {
 
   if (doesObjectExist) {
     cartText = "Remove from cart";
-    addToCartStyle = "btn-success";
+    addToCartStyle = "btn-danger";
   }
 
   container.innerHTML = `

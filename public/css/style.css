@@ -10773,6 +10773,11 @@ textarea.form-control-lg {
   max-width: 12rem;
 }
 
+.cart-total {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .cart-icon {
   position: relative;
 }
@@ -10782,12 +10787,27 @@ textarea.form-control-lg {
   right: -11px;
 }
 
+h1, .h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5 {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
 html,
 body {
   height: 100%;
 }
 
 body {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.1rem;
   display: flex;
   flex-direction: column;
 }

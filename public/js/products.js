@@ -36,15 +36,15 @@ export function createProducts(renderProducts) {
   } else {
     renderProducts.forEach(function (product) {
       container.innerHTML += `<div class="col">
-      <div class="card h-100 border-0 bg-body">
+      <div class="card h-100 border-0 bg-light">
         <div class="ratio ratio-4x5">
           <img src="${baseUrl}${product.image.url}" class="card-img-top img-fluid rounded-0" alt="${product.image.alternativeText}">
         </div>
-        <div class="card-body">
+        <div class="card-body p-0 mt-3">
           <h5 class="card-title">${product.title}</h5>
           <p class="card-text">$ ${product.price}</p>
-          <a href="/public/product-specific.html?id=${product.id}" class="card-link">View product</a>
         </div>
+        <a href="/public/product-specific.html?id=${product.id}" class="stretched-link"></a>
       </div>
     </div>`;
     });

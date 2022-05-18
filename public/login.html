@@ -15,30 +15,34 @@
     <main>
       <div class="wrapper">
         <div class="nav-container"></div>
-        <div class="container my-5 text-center">
-          <form>
-            <h1>Login</h1>
-            <div class="message-container"></div>
-            <div class="mb-3">
-              <label for="username" class="form-label"
-                >Username/Email address</label
-              >
-              <input
-                class="form-control"
-                id="username"
-                aria-describedby="username"
-              />
-              <div id="username" class="form-text">
-                We'll never share your email with anyone else.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" />
-            </div>
+        <div class="container">
+          <div class="row justify-content-center my-5">
+            <div class="col-12 col-md-6 col-lg-5">
+              <h1>Login</h1>
+              <form>
+                <div class="message-container"></div>
+                <div class="mb-3">
+                  <label for="username" class="form-label"
+                    >Username/Email address</label
+                  >
+                  <input
+                    class="form-control"
+                    id="username"
+                    aria-describedby="username"
+                  />
+                  <div id="username" class="form-text">
+                    We'll never share your email with anyone else.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" />
+                </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </main>

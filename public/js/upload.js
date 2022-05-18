@@ -17,6 +17,7 @@ async function onUpload(event) {
   const body = new FormData(form);
   const method = form.method;
   const enctype = form.enctype;
+  console.log(form);
 
   const headers = {
     // "Content-Type": "application/json",
@@ -35,5 +36,6 @@ async function onUpload(event) {
     }
   } catch (error) {
     console.log("something went wrong");
+    console.log(error);
   }
 }

@@ -14,5 +14,6 @@ export async function getUploads() {
   });
   const result = await response.json();
   console.log(result);
-  return result;
+  renderFiles(result);
+  return renderFiles(result);
 }

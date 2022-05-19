@@ -26,10 +26,10 @@ export function createProducts(renderProducts) {
           <div class="card-body p-0 mt-3">
             <h5 class="card-title">${product.title}</h5>
             <p class="card-text">$ ${product.price}</p>
-            <a href="/public/edit.html?id=${product.id}" class="card-link btn btn-info" style="position: absolute;top: 10px;right: 10px; z-index: 3"><i class="bi bi-pencil-square"></i>
+            <a data-id="${product.image.id}" href="/public/edit.html?id=${product.id}" class="card-link btn btn-info" style="position: absolute;top: 10px;right: 10px; z-index: 3"><i class="bi bi-pencil-square"></i>
             </a>
           </div>
-          <a href="/public/product-specific.html?id=${product.id}" class="stretched-link"></a>
+          <a href="/public/product-specific.html?id=${product.id} " class="stretched-link"></a>
         </div>
       </div>`;
     });

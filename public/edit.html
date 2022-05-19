@@ -76,9 +76,14 @@
               </div>
               <div class="mb-3">
                 <label for="img" class="form-label"
-                  >To update/change the product image click here. Choose only
-                  (PNG, JPG) files.</label
+                  >Check the image you wish to update to. If you would like to
+                  add a new image please visit the
+                  <a href="/public//upload.html">upload media page.</a></label
                 >
+                <div
+                  class="row row-cols-1 row-cols-md-3 g-4"
+                  id="uploadList"
+                ></div>
                 <!-- <input
                     id="imgfile"
                     type="file"
@@ -86,9 +91,6 @@
                     accept="image/png, image/jpeg"
                   /> -->
                 <div id="imageError" class="form-text error error-image"></div>
-                <div class="list-group mb-3" id="uploadList">
-                  <div class="list-group-item">Loading...</div>
-                </div>
               </div>
               <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="featured" />

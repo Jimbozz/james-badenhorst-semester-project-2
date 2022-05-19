@@ -7,6 +7,12 @@
   box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 70%);
 }
 
+//three card banner
+
+.card-image {
+  object-fit: cover;
+}
+
 //Featured cards
 .card-img-top {
   object-fit: cover;

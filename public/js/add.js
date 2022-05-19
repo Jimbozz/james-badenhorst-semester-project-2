@@ -114,7 +114,6 @@ async function addProduct(
   console.log(data);
   const token = getToken();
   const headers = new Headers({
-    // "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
   });
 
@@ -131,8 +130,8 @@ async function addProduct(
   } catch (error) {
     console.log(error);
     displayMessage(
-      "alert-warning",
-      `Something happened, please reload the page and try again.`,
+      "alert-danger",
+      `An error ocurred, please reload the page and try again.`,
       ".message-container"
     );
   }

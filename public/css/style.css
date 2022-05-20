@@ -10777,11 +10777,6 @@ textarea.form-control-lg {
   max-width: 12rem;
 }
 
-.cart-total {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .cart-icon {
   position: relative;
 }

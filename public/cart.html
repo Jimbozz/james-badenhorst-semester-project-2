@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <title>Soles | Your cart</title>
   </head>
-  <body>
+  <body class="bg-light">
     <main class="wrapper">
       <div class="nav-container"></div>
       <div class="container">
@@ -24,10 +24,12 @@
           <div class="col-12 col-lg-6">
             <h1>Cart</h1>
             <div class="message-container"></div>
-            <ol
-              class="list-group list-group-numbered cart-items list-group-flush"
-            ></ol>
-            <h2 class="cart-total">Total: $</h2>
+            <div class="row row-cols-2 row-cols-md-3 g-4 my-5 cart-items"></div>
+
+            <div class="d-flex justify-content-between">
+              <h2 class="cart-total">Total: $</h2>
+              <button type="button" class="btn btn-primary">Checkout</button>
+            </div>
           </div>
         </div>
       </div>

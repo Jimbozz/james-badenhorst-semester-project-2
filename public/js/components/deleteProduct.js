@@ -3,8 +3,6 @@ import { productsUrl } from "../settings/api.js";
 import displayMessage from "./displayMessage.js";
 
 export default function deleteProduct(id) {
-  const container = document.querySelector(".delete-container");
-  container.innerHTML = `<button type="button" class="btn btn-outline-danger">Delete</button>`;
   const button = document.querySelector(".btn-outline-danger");
   const value = getToken();
 
@@ -18,7 +16,6 @@ export default function deleteProduct(id) {
   }
 
   button.onclick = async function () {
-    
     const deleteCheck = confirm(
       "Are you sure you want to delete this product?"
     );

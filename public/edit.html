@@ -72,7 +72,7 @@
                 </div>
               </div>
               <div class="mb-3">
-                <div class="img"></div>
+                <input hidden class="img"></input>
               </div>
               <div class="mb-3">
                 <label for="img" class="form-label"
@@ -93,17 +93,17 @@
                 <div id="imageError" class="form-text error error-image"></div>
               </div>
               <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="featured" />
+                <input type="checkbox" class="form-check-input" id="featured" name="featured" />
                 <label class="form-check-label" for="featured"
                   >Featured product</label
                 >
               </div>
               <input id="id" hidden />
-              <div class="mb-3 d-flex">
+              <div class="mb-3">
                 <button id="update" class="btn btn-primary">
                   Update product
                 </button>
-                <div class="delete-container"></div>
+                <button type="button" class="btn btn-outline-danger">Delete</button>
               </div>
             </form>
           </div>

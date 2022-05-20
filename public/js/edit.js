@@ -28,7 +28,6 @@ const description = document.querySelector("#description");
 const idInput = document.querySelector("#id");
 const image = document.querySelector(".img");
 const featured = document.querySelector("#featured");
-const imageRadio = document.querySelector("input.product-list");
 
 (async function () {
   try {
@@ -41,11 +40,11 @@ const imageRadio = document.querySelector("input.product-list");
     description.value = json.description;
     idInput.value = json.id;
     featured.checked = json.featured;
-    // image.style = `background: url('/public/${json.image.url}') center no-repeat; background-size: cover; width: 100%; height: 20rem;`;
-    image.setAttribute("id", json.image.id);
-    const imageId = json.image.id;
 
-    console.log(imageId);
+    // // image.style = `background: url('/public/${json.image.url}') center no-repeat; background-size: cover; width: 100%; height: 20rem;`;
+    // image.setAttribute("id", json.image.id);
+    // const imageId = json.image.id;
+
     deleteProduct(json.id);
   } catch (error) {
     console.log(error);
@@ -67,7 +66,6 @@ function formSubmit(event) {
   const titleValue = title.value.trim();
   const priceValue = price.value.trim();
   const descriptionValue = description.value.trim();
-  // const imageValue = imageFile.files[0];
   const featuredCheck = featured.checked;
   const idValue = idInput.value;
 
@@ -109,37 +107,61 @@ function formSubmit(event) {
       priceValue,
       descriptionValue,
       featuredCheck,
-      idValue
+      idValue,
+      image
     );
   }
 }
 
-async function updateProduct(title, price, description, featuredCheck, id) {
-  const data = {
-    title: title,
-    price: price,
-    description: description,
-    featured: featuredCheck,
-  };
+async function updateProduct(
+  title,
+  price,
+  description,
+  featuredCheck,
+  id,
+  image
+) {
+  const enctype = form.enctype;
+  const originalFormData = new FormData(form);
+  const featuredValue = originalFormData.get("featured");
 
-  // const file = imageFile.files[0];
-  const formData = new FormData();
-  // formData.append(`files.image`, imageValue, imageValue.name);
-  formData.append("data", JSON.stringify(data));
+  if (featuredValue === "on") {
+    originalFormData.set("featured", true);
+  } else {
+    originalFormData.set("featured", false);
+  }
+  const body = new FormData();
+
+  for (const [key, value] of originalFormData.entries()) {
+    if (key.includes("files.")) {
+      body.append(key, value);
+      // Add this to the request body
+      originalFormData.delete(key);
+      // Remove it from the original form data list
+    }
+  }
+
+  const data = Object.fromEntries(originalFormData.entries());
+  console.log(data);
 
   const token = getToken();
+  const headers = new Headers({
+    Authorization: `Bearer ${token}`,
+  });
   const options = {
+    enctype: enctype,
     method: "PUT",
-    body: formData,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+    body: body,
+    headers: headers,
   };
+
+  body.append("data", JSON.stringify(data));
+  console.log(data);
 
   try {
     const response = await fetch(itemUrl, options);
     const json = await response.json();
-    console.log(data);
+
     console.log(json);
 
     if (json.updated_at) {
@@ -148,13 +170,17 @@ async function updateProduct(title, price, description, featuredCheck, id) {
         `You have successfully updated product: ${json.title}`,
         ".message-container"
       );
-      console.log("success");
     }
     if (json.error) {
-      displayMessage("error", json.message, ".message-container");
+      console.log(json.error);
     }
   } catch (error) {
     console.log(error);
+    displayMessage(
+      "alert-danger",
+      `An error ocurred, please reload the page and try again.`,
+      ".message-container"
+    );
   }
 }
 
@@ -166,32 +192,14 @@ const headers = {
 };
 
 (async function getUploads() {
-  const image = document.querySelector(".img");
-  console.log(image);
-
   try {
     const response = await fetch(mediaUrl, {
       headers,
     });
     const result = await response.json();
-
-    for (let i = 0; i < result.length; i++) {
-      console.log(result[i].id);
-
-      // if (result[i].id) {
-      //   console.log("this exists on the page");
-      // }
-    }
-
-    console.log(result);
-    /*trying to remove item from array if it exists on page*/
-    const arr1 = result.filter((r) => r.id > 37);
-    console.log("arr1", arr1);
-    /*------------------*/
     renderFiles(result);
   } catch (error) {
     console.log(error);
-    console.log("there was amn error");
   }
 })();
 
@@ -200,21 +208,18 @@ const container = document.querySelector("#uploadList");
 function renderFiles(imageFiles) {
   imageFiles.forEach(function (files) {
     container.innerHTML += `
-   
-                  
-  <div class="col">
-    <div class="card h-100">
-      <div class="card-header">
-        <input class="form-check-input product-list" name="image" type="radio" value="${files.id}" id="${files.id}"/>
-      </div>
-      <div class="card-body">
-        <div class="ratio ratio-4x5">
-          <img src="${baseUrl}${files.url}" class="card-img-top" alt="...">
+            
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-header">
+            <input class="form-check-input" name="image" type="radio" value="${files.id}" id="${files.id}"/>
+          </div>
+          <div class="card-body p-0">
+            <div class="ratio ratio-4x5">
+              <img src="${baseUrl}${files.url}" class="card-img-top" alt="..." >
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-    `;
+      </div>`;
   });
 }

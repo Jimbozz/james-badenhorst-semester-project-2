@@ -40,10 +40,6 @@ const featured = document.querySelector("#featured");
     idInput.value = json.id;
     featured.checked = json.featured;
 
-    // // image.style = `background: url('/public/${json.image.url}') center no-repeat; background-size: cover; width: 100%; height: 20rem;`;
-    // image.setAttribute("id", json.image.id);
-    // const imageId = json.image.id;
-
     deleteProduct(json.id);
   } catch (error) {
     console.log(error);
@@ -141,12 +137,11 @@ async function updateProduct(
   }
 
   const data = Object.fromEntries(originalFormData.entries());
-  console.log(data);
-
   const token = getToken();
   const headers = new Headers({
     Authorization: `Bearer ${token}`,
   });
+
   const options = {
     enctype: enctype,
     method: "PUT",
@@ -155,20 +150,19 @@ async function updateProduct(
   };
 
   body.append("data", JSON.stringify(data));
-  console.log(data);
 
   try {
     const response = await fetch(itemUrl, options);
     const json = await response.json();
 
-    console.log(json);
-
     if (json.updated_at) {
+      form.innerHTML = "";
       displayMessage(
         "alert-success",
         `You have successfully updated product: ${json.title}`,
         ".message-container"
       );
+      message.innerHTML += `<a href="/public/products.html">Edit more products</a>`;
     }
     if (json.error) {
       console.log(json.error);
@@ -183,7 +177,7 @@ async function updateProduct(
   }
 }
 
-//importing upload files
+//importing uploaded files
 
 const token = getToken();
 const headers = {

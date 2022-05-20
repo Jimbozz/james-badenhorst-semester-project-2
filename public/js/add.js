@@ -119,7 +119,6 @@ async function addProduct(
 
     if (response.ok) {
       window.location = "/public/products.html";
-      console.log("Something good happened");
     }
   } catch (error) {
     console.log(error);

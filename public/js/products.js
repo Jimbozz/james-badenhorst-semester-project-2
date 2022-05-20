@@ -19,7 +19,7 @@ export function createProducts(renderProducts) {
       // const button = document.querySelectorAll(".delete-btn");
 
       container.innerHTML += `<div class="col">
-        <div class="card h-100 border-0 bg-light position-relative">
+        <div class="card h-100 border-0 position-relative">
           <div class="ratio ratio-4x5">
             <img src="${baseUrl}${product.image.url}" class="card-img-top img-fluid rounded-0" alt="${product.image.alternativeText}">
           </div>

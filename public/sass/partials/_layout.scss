@@ -6,27 +6,42 @@ body {
 body {
   font-family: $font-body;
   font-size: 1.1rem;
-  // background-color: $background-colour;
-  // color: white;
+  // background-color: $light;
+  color: $dark;
   display: flex;
   flex-direction: column;
 }
 
 .footer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-shrink: 0;
-  color: white;
+  color: $light;
   background-color: $dark;
   padding: 2rem 5rem;
   justify-content: space-between;
 
+  @media screen and (max-width: 567px) {
+    flex-direction: column;
+    text-align: center;
+  }
+
   &__links {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
+
+    @media screen and (max-width: 567px) {
+      flex-direction: column;
+      gap: 0px;
+    }
   }
 }
 
 .wrapper {
   flex: 1 0 auto;
+}
+
+input,
+textarea {
+  border-radius: 0px !important;
 }

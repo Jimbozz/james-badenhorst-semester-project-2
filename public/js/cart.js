@@ -9,9 +9,10 @@ const products = getProducts();
 createMenu();
 const cartContainer = document.querySelector(".cart-items");
 const message = document.querySelector(".message-container");
+const button = document.querySelector(".btn");
 
 if (products.length === 0) {
-  cartContainer.innerHTML = "Your cart is empty.";
+  button.disabled = true;
   displayMessage(
     "alert-warning",
     `Your cart is currently empty.`,
@@ -23,7 +24,7 @@ products.forEach((product) => {
   cartContainer.innerHTML += `
 
    <div class="col">
-      <div class="card h-100 border-0 bg-light">
+      <div class="card h-100 border-0">
         <div class="ratio ratio-4x5">
           <img src="${baseUrl}${product.image.url}" class="card-img-top img-fluid rounded-0" alt="${product.image.alternativeText}">
         </div>

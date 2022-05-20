@@ -33,8 +33,6 @@ function formSubmit(event) {
 
 async function executeLogin(username, password) {
   const url = baseUrl + "/auth/local";
-  console.log(url);
-
   const data = JSON.stringify({ identifier: username, password: password });
 
   const options = {
@@ -49,12 +47,9 @@ async function executeLogin(username, password) {
     const response = await fetch(url, options);
     const json = await response.json();
 
-    console.log(json);
-
     if (json.user) {
       saveToken(json.jwt);
       saveUser(json.user);
-
       location.href = "/public/products.html";
     }
 

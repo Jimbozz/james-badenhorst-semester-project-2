@@ -41,6 +41,9 @@ function createProduct(product) {
     return parseInt(prod.id) === product.id;
   });
 
+  if (!doesObjectExist) {
+    addToCartStyle = "btn-primary";
+  }
   if (doesObjectExist) {
     cartText = "Remove from cart";
     addToCartStyle = "btn-danger";
@@ -57,7 +60,7 @@ function createProduct(product) {
         <h1 class="mt-3 mt-md-0">${product.title}</h1>
         <h4>$ ${product.price}</h4>
         <p class="mt-3">${product.description}</p>
-        <button type="button" class="btn btn-primary cart-btn mt-3 ${addToCartStyle}" data-id="${product.id}">
+        <button type="button" class="btn cart-btn mt-3 ${addToCartStyle}" data-id="${product.id}">
           ${cartText}
         </button>
     </div>

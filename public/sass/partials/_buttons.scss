@@ -1,0 +1,8 @@
+.btn {
+  border-radius: 0;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1),
+      -5px -5px 20px rgba(255, 255, 255, 0.1);
+  }
+}

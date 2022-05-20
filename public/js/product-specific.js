@@ -2,6 +2,7 @@ import { baseUrl } from "./settings/api.js";
 import { productsUrl } from "./settings/api.js";
 import { getProducts, saveCart } from "./utils/storage.js";
 import createMenu from "./components/createMenu.js";
+import displayMessage from "./components/displayMessage.js";
 
 createMenu();
 
@@ -12,16 +13,22 @@ const finalId = parseInt(id);
 const url = productsUrl + finalId;
 const container = document.querySelector(".product-container");
 const title = document.querySelector("title");
+const message = document.querySelector(".message-container");
 
 (async function callApi() {
   try {
     const response = await fetch(url);
     const json = await response.json();
-    /*Rename title of page when brand name has been decided*/
     title.innerHTML = `Soles | ${json.title}`;
+
     createProduct(json);
   } catch (error) {
     console.log(error);
+    displayMessage(
+      "alert-success",
+      `You have successfully updated product: ${json.title}`,
+      ".message-container"
+    );
   }
 })();
 
@@ -40,22 +47,21 @@ function createProduct(product) {
   }
 
   container.innerHTML = `
-  <div class="row gx-5">
+  <div class="row">
     <div class="col-md">
       <div class="ratio ratio-1x1">
         <img src="${baseUrl}${product.image.url}" class="img-fluid" alt="" style="object-fit: cover;">
       </div>
     </div>
     <div class="col-md">
-        <h1>${product.title}</h1>
-        <p>${product.description}</p>
+        <h1 class="mt-3 mt-md-0">${product.title}</h1>
         <h4>$ ${product.price}</h4>
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3 cart-btn ${addToCartStyle}" data-id="${product.id}">
-                ${cartText}
-              </button>
+        <p class="mt-3">${product.description}</p>
+        <button type="button" class="btn btn-primary cart-btn mt-3 ${addToCartStyle}" data-id="${product.id}">
+          ${cartText}
+        </button>
     </div>
-    </div>
-  `;
+  </div>`;
 
   const title = product.title;
   const price = product.price;

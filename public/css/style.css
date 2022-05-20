@@ -10830,7 +10830,7 @@ body {
   flex-shrink: 0;
   color: #f8f9fa;
   background-color: #262525;
-  padding: 2rem 5rem;
+  padding: 1.5rem 5rem;
   justify-content: space-between;
 }
 @media screen and (max-width: 567px) {

@@ -10,7 +10,7 @@ export default function createMenu() {
   if (username) {
     container.innerHTML = `
     
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
         <div class="container">
           <a class="navbar-brand" href="/public/index.html"><img src="/public/assets/soles-3-01.svg" alt="Soles logo" style="width: 5rem;"></a>
           <button

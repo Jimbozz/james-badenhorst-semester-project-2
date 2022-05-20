@@ -9,8 +9,9 @@ export function searchProducts(products) {
 
     const filteredProducts = products.filter(function (product) {
       const productTitle = product.title.trim().toLowerCase();
+      const productDes = product.description.trim().toLowerCase();
 
-      if (productTitle === safeSearchValue) {
+      if (productTitle === safeSearchValue || productDes === safeSearchValue) {
         return true;
       }
       if (safeSearchValue === "") {

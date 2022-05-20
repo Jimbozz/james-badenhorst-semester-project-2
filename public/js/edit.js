@@ -46,7 +46,6 @@ const imageRadio = document.querySelector("input.product-list");
     const imageId = json.image.id;
 
     console.log(imageId);
-
     deleteProduct(json.id);
   } catch (error) {
     console.log(error);
@@ -146,7 +145,7 @@ async function updateProduct(title, price, description, featuredCheck, id) {
     if (json.updated_at) {
       displayMessage(
         "alert-success",
-        `You have successfully updated article: ${json.title}`,
+        `You have successfully updated product: ${json.title}`,
         ".message-container"
       );
       console.log("success");
@@ -159,7 +158,7 @@ async function updateProduct(title, price, description, featuredCheck, id) {
   }
 }
 
-//Trying
+//importing upload files
 
 const token = getToken();
 const headers = {

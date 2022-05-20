@@ -5,7 +5,7 @@ import { searchProducts } from "./components/searchProducts.js";
 import createMenu from "./components/createMenu.js";
 import { getUserName } from "./utils/storage.js";
 
-const messageContainer = document.querySelector(".message-container");
+const message = document.querySelector(".message-container");
 const container = document.querySelector(".products-container");
 const username = getUserName();
 

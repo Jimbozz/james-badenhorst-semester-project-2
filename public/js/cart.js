@@ -9,7 +9,6 @@ const products = getProducts();
 createMenu();
 const cartContainer = document.querySelector(".cart-items");
 const message = document.querySelector(".message-container");
-// const cartTotal = document.querySelector(".cart__total");
 
 if (products.length === 0) {
   cartContainer.innerHTML = "Your cart is empty.";

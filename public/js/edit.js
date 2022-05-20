@@ -3,7 +3,6 @@ import { productsUrl, baseUrl } from "./settings/api.js";
 import displayMessage from "./components/displayMessage.js";
 import { getToken } from "./utils/storage.js";
 import deleteProduct from "./components/deleteProduct.js";
-// import { getUploads } from "./uploads.js";
 import { mediaUrl } from "./settings/api.js";
 
 createMenu();

@@ -6,7 +6,6 @@ import { productsUrl } from "./settings/api.js";
 createMenu();
 
 const form = document.querySelector("form");
-
 const title = document.querySelector("#title");
 const price = document.querySelector("#price");
 const description = document.querySelector("#description");
@@ -24,7 +23,6 @@ function formSubmit(event) {
   const imageValue = image.files[0];
   const featuredCheck = featured.checked;
 
-  console.log({ featuredCheck });
   // Product name error
   const nameError = document.querySelector("#titleError");
   if (titleValue.length < 1 || titleValue.length > 14) {
@@ -84,7 +82,6 @@ async function addProduct(
   imageValue
 ) {
   const message = document.querySelector(".message-container");
-  // const corsEnabledOne = "https://noroffcors.herokuapp.com/" + productsUrl;
   const url = productsUrl;
   const method = form.method;
   const enctype = form.enctype;
@@ -99,8 +96,6 @@ async function addProduct(
 
   const body = new FormData();
 
-  console.log("====> ", originalFormData.get("featured"));
-
   for (const [key, value] of originalFormData.entries()) {
     if (key.includes("files.")) {
       body.append(key, value);
@@ -111,7 +106,6 @@ async function addProduct(
   }
 
   const data = Object.fromEntries(originalFormData.entries());
-  console.log(data);
   const token = getToken();
   const headers = new Headers({
     Authorization: `Bearer ${token}`,

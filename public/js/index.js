@@ -1,6 +1,4 @@
-import { baseUrl } from "./settings/api.js";
-import { featuredUrl } from "./settings/api.js";
-import { heroUrl } from "./settings/api.js";
+import { baseUrl, heroUrl, featuredUrl } from "./settings/api.js";
 import createMenu from "./components/createMenu.js";
 import { createFeatured } from "./components/createFeatured.js";
 
@@ -17,6 +15,7 @@ createMenu();
 
     const heroImg = baseUrl + jsonHero.hero_banner.url;
     container.style.backgroundImage = `url(${heroImg})`;
+    container.title = jsonHero.hero_banner_alt_text;
 
     createFeatured(jsonFeat);
   } catch (error) {

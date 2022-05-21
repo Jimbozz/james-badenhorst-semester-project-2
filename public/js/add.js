@@ -115,7 +115,6 @@ async function addProduct(
 
   try {
     const response = await fetch(url, { body, method, enctype, headers });
-    console.log(response);
 
     if (response.ok) {
       window.location = "/public/products.html";

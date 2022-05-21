@@ -27,16 +27,6 @@ export function saveCart(products) {
   saveToStorage(productKey, products);
 }
 
-// export function getProducts() {
-//   const cartItem = getFromStorage(productKey);
-
-//   if (cartItem === null) {
-//     return [];
-//   } else {
-//     return cartItem;
-//   }
-// }
-
 export function clearStorage() {
   // localStorage.clear();
   localStorage.removeItem("token");

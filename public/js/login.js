@@ -15,8 +15,6 @@ form.addEventListener("submit", formSubmit);
 function formSubmit(event) {
   event.preventDefault();
 
-  message.innerHTML = "";
-
   const usernameValue = username.value.trim();
   const passwordValue = password.value.trim();
 
@@ -27,7 +25,6 @@ function formSubmit(event) {
       ".message-container"
     );
   }
-
   executeLogin(usernameValue, passwordValue);
 }
 

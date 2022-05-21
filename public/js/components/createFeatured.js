@@ -1,5 +1,4 @@
 import { baseUrl } from "../settings/api.js";
-import { productsUrl } from "../settings/api.js";
 
 export function createFeatured(renderFeatured) {
   const container = document.querySelector(".featured-products");

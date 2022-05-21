@@ -1,5 +1,4 @@
-import { baseUrl } from "./settings/api.js";
-import { productsUrl } from "./settings/api.js";
+import { baseUrl, productsUrl } from "./settings/api.js";
 import { getProducts, saveCart } from "./utils/storage.js";
 import createMenu from "./components/createMenu.js";
 import displayMessage from "./components/displayMessage.js";
@@ -93,7 +92,6 @@ function createProduct(product) {
       const newProducts = addToCart.filter((item) => item.id !== id);
       saveCart(newProducts);
     }
-
     createProduct(product);
   }
 }

@@ -40,14 +40,7 @@ export default function deleteProduct(id) {
             "Something went wrong. Please reload the page and try again.",
             ".message-container"
           );
-        } else {
-          displayMessage(
-            "alert-success",
-            "The product was successfully deleted",
-            ".message-container"
-          );
         }
-
         location.href = "/public/products.html";
       } catch (error) {
         console.log(error);

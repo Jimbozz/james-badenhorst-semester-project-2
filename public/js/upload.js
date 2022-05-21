@@ -1,4 +1,5 @@
 import createMenu from "./components/createMenu.js";
+import displayMessage from "./components/displayMessage.js";
 import { uploadUrl } from "./settings/api.js";
 import { getToken } from "./utils/storage.js";
 
@@ -25,10 +26,19 @@ async function onUpload(event) {
     const response = await fetch(url, { method, enctype, body, headers });
 
     if (response.ok) {
-      console.log("THis went well");
-      window.location = "/public/index.html";
+      displayMessage(
+        "alert-success",
+        `Successfully uploaded media.`,
+        ".message-container"
+      );
+      // window.location = "/public/index.html";
     }
   } catch (error) {
+    displayMessage(
+      "alert-danger",
+      `An error ocurred, please reload the page and try again.`,
+      ".message-container"
+    );
     console.log(error);
   }
 }

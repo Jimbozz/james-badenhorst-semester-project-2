@@ -1,9 +1,8 @@
 import createMenu from "./components/createMenu.js";
-import { productsUrl, baseUrl } from "./settings/api.js";
+import { productsUrl, baseUrl, mediaUrl } from "./settings/api.js";
 import displayMessage from "./components/displayMessage.js";
 import { getToken } from "./utils/storage.js";
 import deleteProduct from "./components/deleteProduct.js";
-import { mediaUrl } from "./settings/api.js";
 
 createMenu();
 
@@ -32,6 +31,7 @@ const featured = document.querySelector("#featured");
   try {
     const response = await fetch(itemUrl);
     const json = await response.json();
+
     pageTitle.innerHTML = `Brand name | Edit product: ${json.title}`;
     formHeading.innerHTML = `Edit: ${json.title}`;
     title.value = json.title;

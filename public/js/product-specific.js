@@ -50,12 +50,12 @@ function createProduct(product) {
 
   container.innerHTML = `
   <div class="row">
-    <div class="col-md">
+    <div class="col-md product-container-image">
       <div class="ratio ratio-1x1">
         <img src="${baseUrl}${product.image.url}" class="img-fluid" alt="" style="object-fit: cover;">
       </div>
     </div>
-    <div class="col-md">
+    <div class="col-md product-container-info">
         <h1 class="mt-3 mt-md-0">${product.title}</h1>
         <h4>$ ${product.price}</h4>
         <p class="mt-3">${product.description}</p>

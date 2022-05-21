@@ -53,9 +53,9 @@ export default function createMenu() {
               </li>
             </ul>
             <div class="d-flex gap-2 flex-column flex-lg-row">
-              <ul class="navbar-nav align-items-lg-center">
+              <ul class="navbar-nav align-items-lg-center gap-3">
                 <li class="nav-item">
-                  <a class="btn btn-outline-primary" href="/public/login.html" id="logout" role="button">Logout: ${username}</a>
+                  <a class="btn btn-outline-primary btn-sm" href="/public/login.html" id="logout" role="button">Logout: ${username}</a>
                 </li>
                 <li class="nav-item">
                   <a class="cart-icon" href="/public/cart.html" aria-label="cart icon">
@@ -77,7 +77,7 @@ export default function createMenu() {
     container.innerHTML = `
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand" href="/public/index.html"><img src="/public/assets/soles-3-01.svg" alt="" style="width: 5rem;"></a>
+          <a class="navbar-brand" href="/public/index.html"><img src="/public/assets/soles-3-01.svg" alt="Soles logo" style="width: 5rem;"></a>
           <button
             class="navbar-toggler"
             type="button"
@@ -101,9 +101,9 @@ export default function createMenu() {
                 }" href="/public/products.html">Products</a>
               </li>
             </ul>
-            <ul class="navbar-nav align-items-lg-center">
+            <ul class="navbar-nav align-items-lg-center gap-3">
               <li class="nav-item">
-                <a class="btn btn-outline-primary" id="login" href="/public/login.html" role="button">Login</a>
+                <a class="btn btn-outline-primary btn-sm" id="login" href="/public/login.html" role="button">Login</a>
               </li>
               <li class="nav-item">
                   <a class="cart-icon" href="/public/cart.html" aria-label="cart icon">

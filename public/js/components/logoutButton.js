@@ -10,6 +10,8 @@ export default function logoutButton() {
       if (activateLogout) {
         clearStorage();
         location.href = "/public/login.html";
+      } else {
+        return false;
       }
     };
   }

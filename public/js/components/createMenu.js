@@ -55,7 +55,7 @@ export default function createMenu() {
             <div class="d-flex gap-2 flex-column flex-lg-row">
               <ul class="navbar-nav align-items-lg-center">
                 <li class="nav-item">
-                  <a class="nav-link" href="/public/login.html" id="logout" href="/public/login.html" role="button">Logout: ${username}</a>
+                  <a class="btn btn-outline-primary" href="/public/login.html" id="logout" role="button">Logout: ${username}</a>
                 </li>
                 <li class="nav-item">
                   <a class="cart-icon" href="/public/cart.html" aria-label="cart icon">
@@ -103,9 +103,7 @@ export default function createMenu() {
             </ul>
             <ul class="navbar-nav align-items-lg-center">
               <li class="nav-item">
-                <a class="nav-link ${
-                  pathname === "/public/login.html" ? "active" : ""
-                }" href="/public/login.html" id="login" href="/public/login.html" role="button">Login</a>
+                <a class="btn btn-outline-primary" id="login" href="/public/login.html" role="button">Login</a>
               </li>
               <li class="nav-item">
                   <a class="cart-icon" href="/public/cart.html" aria-label="cart icon">

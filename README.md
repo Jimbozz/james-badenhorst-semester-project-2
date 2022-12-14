@@ -44,6 +44,14 @@ git clone git@github.com:Jimbozz/james-badenhorst-semester-project-2.git
 
 Use version of Live Server to start project on localhost
 
+## Logging in to Strapi
+
+- Username: admin
+- Email: admin@admin.com
+- Password: Pass1234
+
+
+
 
 ## Contact
 [My LinkedIn](https://www.linkedin.com/in/jamesbadenhorst/)
